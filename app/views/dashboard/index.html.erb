@@ -1,0 +1,426 @@
+<% content_for :stylesheets do %>
+<style type="text/css">
+print {
+  
+}
+.page-break-clear { 
+  clear: both;
+}
+.page-break {
+  page-break-after: always; /* depreciating, use break-after */
+  break-after: page;
+  height: 0px;
+  display: block!important;
+}
+</style>
+
+<% end %>
+
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800 d-print-none"><%=t("portal.sidebar.dashboard")%></h1>
+            <h1 class="h3 mb-0 text-gray-800 d-none d-print-inline"><%=t("portal.dashboard.print_title")%>
+            <% if current_user.has_role? :Moderator %>
+            <strong><%=  current_user.school.name %></strong>
+            <% end %>
+            </h1>
+            <h1 class="h3 mb-0 text-gray-800 d-none d-print-inline"><%= Time.now.strftime("%m/%d/%Y") %></h1>
+
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- users Card  -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><%=t('portal.dashboard.users')%></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><%=@users%></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-user fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- bot users Card  -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><%=t('portal.dashboard.botad_users')%></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><%=@logs%></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- happy usage Card  -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1"><%=t('portal.dashboard.attendes')%></div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @attending.round(2)%>%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: <%= @attending.round(2)%>%" aria-valuenow="<%= @attending.round(2)%>" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-smile fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Daily attendies Card  -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><%=t('portal.dashboard.daily_attendies_count')%></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><%=@daily_attendes_count%></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+
+          <!-- 2nd Content Row -->
+          <div class="row">
+
+<% if current_user.has_role? :Admin %>
+          <!-- visitors_count Card  -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><%=t('portal.dashboard.visitors_count')%></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-eye fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+<% end %>
+            <!-- students_count Card  -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><%=t('portal.dashboard.students_count')%></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><%=@students_count%></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- teachers_count Card  -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><%=t('portal.dashboard.teachers_count')%></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- classes_count Card  -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><%=t('portal.dashboard.classes_count')%></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 2nd Content Row -->
+
+          <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary"><%= t('portal.dashboard.bot_activties')%></h6>
+                  <!-- <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div> -->
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="myAreaChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary"><%=t('portal.dashboard.complaint_overview')%></h6>
+                  <!-- <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div> -->
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-danger"></i> <%=t('portal.dashboard.closed_tickets')%>
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> <%=t('portal.dashboard.opened_tickets')%>
+                    </span>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4 page-break-clear" >
+
+              <!-- Project Card Example -->
+              <%
+=begin%>
+ <div class="card shadow mb-4"  >
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"><%=t('portal.dashboard.common_paths')%></h6>
+                </div>
+                <div class="card-body">
+                  <h4 class="small font-weight-bold"><%=t('portal.dashboard.studyPlanS')%> <span class="float-left"><%=@studyPlanS_prec%>%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: <%=@studyPlanS_prec%>%" aria-valuenow="<%=@studyPlanS_prec%>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold"><%=t('portal.dashboard.schedulesS')%> <span class="float-left"><%=@schedulesS_prec%>%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: <%=@schedulesS_prec%>%" aria-valuenow="<%=@schedulesS_prec%>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold"><%=t('portal.dashboard.absense')%> <span class="float-left"><%=@absense_prec%>%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" style="width: <%=@absense_prec%>%" aria-valuenow="<%=@absense_prec%>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold"><%=t('portal.dashboard.noor')%> <span class="float-left"><%=@noor_prec%>%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: <%=@noor_prec%>%" aria-valuenow="<%=@noor_prec%>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold"><%=t('portal.dashboard.mdrsti')%> <span class="float-left"><%=@mdrsti_prec%>%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: <%=@mdrsti_prec%>%" aria-valuenow="<%=@mdrsti_prec%>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold"><%=t('portal.dashboard.otherStudent')%> <span class="float-left"><%=@otherStudent_prec%>%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: <%=@otherStudent_prec%>%" aria-valuenow="<%=@otherStudent_prec%>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              
+<%
+=end%>
+
+<% if current_user.has_role? :Admin %>
+
+              <!-- Color System -->
+              <div class="row d-print-none">
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                      Primary
+                      <div class="text-white-50 small">#4e73df</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-success text-white shadow">
+                    <div class="card-body">
+                      Success
+                      <div class="text-white-50 small">#1cc88a</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-info text-white shadow">
+                    <div class="card-body">
+                      Info
+                      <div class="text-white-50 small">#36b9cc</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-warning text-white shadow">
+                    <div class="card-body">
+                      Warning
+                      <div class="text-white-50 small">#f6c23e</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-danger text-white shadow">
+                    <div class="card-body">
+                      Danger
+                      <div class="text-white-50 small">#e74a3b</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-secondary text-white shadow">
+                    <div class="card-body">
+                      Secondary
+                      <div class="text-white-50 small">#858796</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-light text-black shadow">
+                    <div class="card-body">
+                      Light
+                      <div class="text-black-50 small">#f8f9fc</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card bg-dark text-white shadow">
+                    <div class="card-body">
+                        Dark
+                        <div class="text-white-50 small">#5a5c69</div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            
+<% end %>
+</div>
+            <div class="col-lg-6 mb-4 d-print-none">
+
+              <!-- Training Material -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"><%=t('portal.dashboard.training_materials')%></h6>
+                </div>
+                <div class="card-body">
+                  <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="" alt="">
+
+                  </div>
+                  <p><%= t('portal.dashboard.training_desc_html', link: 'admin_guide_index_path')%></p>
+                  
+                </div>
+              </div>
+
+              <!-- Approach -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                </div>
+                <div class="card-body">
+                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <script type="text/javascript">
+
+          function printPage() {
+                        window.print()
+                    }
+
+            
+            var attendies_months = [];
+            <% @months.each do |m|  %>
+              attendies_months.push("<%= m%>");
+            <% end %>
+            var attendies_totals = [];
+            <% @months_total.each do |t|  %>
+              attendies_totals.push("<%= t%>");
+            <% end %>
+            // var all_users_count = <%= @monthly_users_count %>;
+          </script>
+          <% content_for :javascript do %>
+
+            <%= javascript_pack_tag 'chart-area-demo' %>
+
+            <%= javascript_pack_tag 'chart-pie-demo' %>
+          <% end %>

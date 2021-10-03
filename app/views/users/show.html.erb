@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p class="breadcrumb p-2">
+  <strong>id:</strong>
+  <%= @user.id %>
+</p>
+
+<p class="breadcrumb p-2">
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p class="breadcrumb p-2">
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p class="breadcrumb p-2">
+  <strong>School:</strong>
+  <%= @user.school_id != nil ? @user.school.name : '' %>
+</p>
+
+<p class="breadcrumb p-2">
+  <strong>Roles:</strong>
+  <%= @user.roles_mask != nil ? @user.roles_mask : '' %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

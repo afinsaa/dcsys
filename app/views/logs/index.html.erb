@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Logs</h1>
+
+ <div class="card-body">
+  <div class="table-responsive">
+    <table class="table table-bordered dataTable">
+
+  <thead>
+    <tr>
+      
+      <th>Student</th>
+      <% if current_user.has_role? :Admin %>
+      <th>User</th>
+      <% end %>
+      <th>Tawaklna s</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logs.each do |log| %>
+      <tr>
+        
+        <td><%= log.student.name %></td>
+        <% if current_user.has_role? :Admin %>
+        <td><%= log.user.name %></td>
+        <% end %>
+        
+        <td><%= log.tawaklna_s %></td>
+        <td><%= log.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+ </div>
+</div>
+<br>
+  <%= render partial: 'layouts/nav', locals: {pagy: @pagy} %>
+

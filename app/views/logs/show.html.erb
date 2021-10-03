@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div class="alert alert-<%= @tawaklnaClass %>">
+
+  <div class="row col-md-12">
+    <div class="col-md-6">
+    <p>
+      <small>Student:</small>
+      <h4><%= @log.student.id %></h4>
+      <h1><%= @log.student.name %></h1>
+    </p>
+    </div>
+    
+
+    <div class="col-md-6">
+      <p>
+        <small>Tawaklna Status:</small>
+        <h1><%= @log.tawaklna_s %></h1>
+      </p>
+    </div>
+  </div>
+
+  <p>
+    <strong>Check in time:</strong>
+    <%= @log.created_at %>
+  </p>
+
+</div>
+
+<p>
+  
+  <h6 class="breadcrumb p-2"><strong>User: </strong> <%= @log.user.name %></h6>
+</p>
+
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>

@@ -1,0 +1,218 @@
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
+
+
+
+           
+            
+            
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto" dir="<%= t("dir") %>">
+        
+<%
+=begin%>
+             
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+
+            
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+        
+             
+<%
+=end%>
+
+            <%
+            # <!-- Nav Item - Messages -->
+            # <li class="nav-item dropdown no-arrow mx-1">
+            #   <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            #     <i class="fas fa-envelope fa-fw"></i>
+            #     <!-- Counter - Messages -->
+            #     <span class="badge badge-danger badge-counter">7</span>
+            #   </a>
+            #   <!-- Dropdown - Messages -->
+            #   <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+            #     <h6 class="dropdown-header">
+            #       Message Center
+            #     </h6>
+            #     <a class="dropdown-item d-flex align-items-center" href="#">
+            #       <div class="dropdown-list-image mr-3">
+            #         <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+            #         <div class="status-indicator bg-success"></div>
+            #       </div>
+            #       <div class="font-weight-bold">
+            #         <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+            #         <div class="small text-gray-500">Emily Fowler · 58m</div>
+            #       </div>
+            #     </a>
+            #     <a class="dropdown-item d-flex align-items-center" href="#">
+            #       <div class="dropdown-list-image mr-3">
+            #         <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+            #         <div class="status-indicator"></div>
+            #       </div>
+            #       <div>
+            #         <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+            #         <div class="small text-gray-500">Jae Chun · 1d</div>
+            #       </div>
+            #     </a>
+            #     <a class="dropdown-item d-flex align-items-center" href="#">
+            #       <div class="dropdown-list-image mr-3">
+            #         <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+            #         <div class="status-indicator bg-warning"></div>
+            #       </div>
+            #       <div>
+            #         <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+            #         <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+            #       </div>
+            #     </a>
+            #     <a class="dropdown-item d-flex align-items-center" href="#">
+            #       <div class="dropdown-list-image mr-3">
+            #         <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+            #         <div class="status-indicator bg-success"></div>
+            #       </div>
+            #       <div>
+            #         <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+            #         <div class="small text-gray-500">Chicken the Dog · 2w</div>
+            #       </div>
+            #     </a>
+            #     <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+            #   </div>
+            # </li>
+
+          %>
+
+        <!-- Nav Item - User Information -->
+        <% if user_signed_in? %>
+        <li class="nav-item dropdown no-arrow">
+            <div class="nav-link dropdown-toggle" >
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                    <%= t("portal.topbar.logged_in_as")%> <strong><%= current_user.email %></strong>.
+                    <% if current_user.has_role? :Moderator %>
+                    <br/><%=t("portal.topbar.logged_in_school")%> <strong><%=  current_user.school.name %></strong>
+                    <% end %>
+                </span>
+
+                <%
+=begin%>
+ <%= image_tag("user_pic.png", class: "img-profile rounded-circle")%> 
+<%
+=end%>
+<div class="topbar-divider d-none d-sm-block"></div>
+                  <%= link_to t('portal.topbar.logout.logout'), destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } , :class => 'btn btn-primary'  %>
+
+            </div>
+            <!-- Dropdown - User Information -->
+            
+        </li>
+
+
+
+<!-- Nav Item - Alerts -->
+            <% if user_signed_in? %>
+            <%
+=begin%>
+ <li class="nav-item dropdown no-arrow mx-1" >
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <% if current_user.messages.count > 0 %>
+                <span id="alertsd" class="badge badge-danger badge-counter"><%= current_user.messages.count %></span>
+                <% end %>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu  shadow animated--grow-in" aria-labelledby="alertsDropdown" >
+                <h6 class="dropdown-header">
+                  <%= t('portal.topbar.alerts.alerts_center')%>
+                </h6>
+                <% if current_user.messages.count == 0 %>
+                  <p class="dropdown-item text-center small text-gray-500"><%= t('portal.topbar.alerts.no_alerts')%></p>
+                <% end %>
+                <% current_user.messages.limit(4).each do |m| %>
+                  <div id="<%= m.id %>" class="dropdown-item d-flex " href="#">
+                    <div class="text-right">
+                      
+                    <%= link_to content_tag(:span,'', class: 'far fa-times-circle'), 'message_url(m.id)',remote: true, :method => :delete, :class => 'btn text-gray-500' %>
+
+
+                    </div>
+                    <div class="text-right">
+                      <div class="small text-gray-500"><%= m.created_at%></div>
+                      <span class="font-weight-bold"><%= m.message_text %></span>
+                    </div>
+                    
+                  </div>
+                <% end %>
+                <a class="dropdown-item text-center small text-gray-500" href="<%= 'messages_url'%>"><%= t('portal.topbar.alerts.show_messages_center')%></a>
+              </div>
+            </li> 
+<%
+=end%>
+            <% end %>
+
+
+
+        
+
+
+        <% else %>
+        <li class="nav-item mx-1">
+            <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %>
+        </li>
+        <li class="nav-item mx-1">
+            <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
+        </li>
+        <% end %>
+    </ul>
+
+</nav>
+<!-- End of Topbar -->
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><%= t('portal.topbar.logout.title')%></h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body"><%= t('portal.topbar.logout.content')%></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal"><%= t('portal.forms.cancel')%></button>
+                <%= link_to t('portal.topbar.logout.logout'), destroy_user_session_path, method: :delete, :class => 'btn btn-primary'  %>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<% content_for :javascript do %>
+<script type="text/javascript">
+function deleteMsg(id){
+  console.log(id)
+  
+}
+</script>
+<% end %>

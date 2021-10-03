@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Custom styles for this template-->
+
+    <%= yield :stylesheets %>
+
+    <%= favicon_link_tag %>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%= content_for?(:title) ? "Wakeel CP - #{yield(:title)}" : "Panel" %></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%= render 'layouts/sidebar' %>
+        <!-- end of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <%= render 'layouts/topbar' %>
+                <!-- end of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid" dir="<%= t('dir')%>">
+
+                    <% if notice %>
+                    <p class="alert alert-success"><%= notice %></p>
+                    <% end %>
+                    <% if alert %>
+                    <p class="alert alert-danger"><%= alert %></p>
+                    <% end %>
+                    <% if flash[:error] %>
+                    <p class="alert alert-danger"><%= flash[:error].join("<br/>").html_safe %></p>
+                    <% end %>
+
+                    <main role="main">
+                        <%= content_for?(:content) ? yield(:content) : yield %>
+                    </main>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span><%= t("copyright") %></span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+
+
+
+
+    <!-- Page level custom scripts -->
+    <%= javascript_pack_tag 'jquery-ui' %>
+
+    <%= javascript_pack_tag 'jquery-easing/jquery' %>
+
+
+    <%= javascript_pack_tag 'Chart' %>
+    <%= javascript_pack_tag 'bootstrap/js/bootstrap' %>
+    <%= javascript_pack_tag 'popper' %>
+
+
+    <%= javascript_pack_tag 'sb-admin-2' %>
+
+    <%= yield :javascript %>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

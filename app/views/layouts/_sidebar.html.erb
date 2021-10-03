@@ -1,0 +1,120 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion d-print-none" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<%= root_path %>">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-qrcode"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Hasseen <sup>1.0</sup></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <% if I18n.locale == I18n.default_locale %>
+      <%= nav_item "English", { :locale=>'en' } , 'fa-language' %>
+
+    <% else %>
+      <%= nav_item "عربي", { :locale=>'ar' } , 'fa-language' %>
+
+
+    <%end%>
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <!-- <li class="nav-item ">
+    <a class="nav-link" href="">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a>
+  </li> -->
+    <%= nav_item t('portal.sidebar.dashboard'), root_path , 'fa-tachometer-alt' %>
+
+   
+    <!-- Nav Item - Dashboard -->
+    <!-- <li class="nav-item ">
+    <a class="nav-link" href="">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Bot Active Directory</span></a>
+  </li> -->
+    <% if can? :manage, Log %>
+    <%= nav_item t('portal.sidebar.logs'), logs_path, 'fa-table' %>
+    <% end %>
+    <%= nav_item t('portal.sidebar.checkin'), checkin_path, 'fa-sign-in-alt' %>
+    <!-- Nav Item - users -->
+    <!-- <li class="nav-item ">
+    <a class="nav-link" href="">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Users</span></a>
+  </li> -->
+    <% if can? :manage, User %>
+    <%= nav_item t('portal.sidebar.users'), users_path, 'fa-user' %>
+    <% end %>
+
+    <% if can? :manage, Student %>
+    <%= nav_item t('portal.sidebar.students'), students_path, 'fa-users' %>
+    <% end %>
+    
+    <!-- Nav Item - Tables -->
+    <!-- <li class="nav-item">
+    <a class="nav-link" href="tables.html">
+      <i class="fas fa-fw fa-users"></i>
+      <span>Teachers</span></a>
+  </li> -->
+    
+    <!-- Nav Item - Charts -->
+    <!-- <li class="nav-item">
+    <a class="nav-link" href="charts.html">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Enrollment</span></a>
+  </li> -->
+  <% if can? :manage, School %>
+    <%= nav_item t('portal.sidebar.enrollment'), schools_path, 'fa-pen' %>
+  <% end %>
+
+    <%
+=begin%>
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Tests" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span><%= t('portal.sidebar.tests')%></span>
+        </a>
+        <div id="Tests" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">:<%= t('portal.sidebar.tests')%></h6>
+                <!-- <a class="collapse-item" href="buttons.html">Test Papers</a>
+        <a class="collapse-item" href="cards.html">Test Marks</a> -->
+                <%= collapse_item t('portal.sidebar.testpapers'), admin_test_papers_path %>
+                <%= collapse_item t('portal.sidebar.testmarks'), admin_test_marks_path %>
+
+            </div>
+        </div>
+    </li>
+    <%
+=end%>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Charts -->
+    <!-- <li class="nav-item">
+    <a class="nav-link" href="charts.html">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Complaints</span></a>
+  </li> -->
+    
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <%= nav_item_blank t('portal.sidebar.terms'), dashboard_terms_path, 'fa-file-contract' %>
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
+<!-- End of Sidebar -->

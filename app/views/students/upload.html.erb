@@ -1,0 +1,45 @@
+<% content_for :stylesheets do %>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+<% end %>
+
+<hr>
+<h4 class="h6 text-gray-900 mb-2"><%=t('portal.forms.import.title_noor')%></h4>
+
+
+<%= form_tag import_students_path, multipart: true, class: 'user'  do %>
+
+
+
+<div class="custom-file col-md-6">
+    <%= file_field_tag :file, id: "inputGroupFile01",  class: 'custom-file-input', required: true, accept: ".csv, .xlsx"  %>
+    <label class="custom-file-label  text-left" for="inputGroupFile01">Choose file</label>
+</div>
+<div class=" form-group col-md-6">
+    <br />
+    <%= submit_tag t('portal.forms.import.import_button'),  class: 'btn btn-primary btn-user btn-block'  %>
+
+</div>
+
+
+<% end %>
+
+<% content_for :javascript do %>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('.list-search').select2();
+    });
+    $('#inputGroupFile01').on('change', function() {
+        //get the file name
+
+        var fileName = $(this).val();
+        console.log("inside: " + fileName)
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(fileName);
+    });
+</script>
+
+<% end %>

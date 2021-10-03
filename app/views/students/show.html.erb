@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p class="breadcrumb p-2">
+  <strong>Sid:</strong>
+  <%= @student.sid %>
+</p>
+
+<p class="breadcrumb p-2">
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p class="breadcrumb p-2">
+  <strong>Tawaklna s:</strong>
+  <%= @student.tawaklna_s %>
+</p>
+
+<p class="breadcrumb p-2">
+  <strong>School:</strong>
+  <%= @student.school_id %>
+</p>
+
+<p class="breadcrumb p-2">
+  <strong>QR Code:</strong>
+  <%= image_tag("tmp/tmpqr_#{current_user.id}.png") %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>
