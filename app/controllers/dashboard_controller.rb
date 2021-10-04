@@ -53,6 +53,6 @@ class DashboardController < ApplicationController
     end
 
     def redirect_to_dashboard
-        redirect_to dashboard_index_url
+        redirect_to dashboard_index_url, locale: :ar
       end
   end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   
-  scope "/:locale" do
+  # scope "/:locale", locale: /en|ar/ do
     resources :logs
     
     devise_for :users, controllers: {
@@ -40,7 +40,10 @@ Rails.application.routes.draw do
 
     
 
-
     root to: 'dashboard#redirect_to_dashboard'
-  end
+    
+  # end
+  
+  # root to: 'dashboard#redirect_to_dashboard'
+
 end

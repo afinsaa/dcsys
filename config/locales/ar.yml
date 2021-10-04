@@ -615,6 +615,12 @@ ar:
       message:
         user_id: 'المتلقي'
         message_text: 'المحتوى'
+    errors:
+      models:
+        user:
+          attributes:
+            school:
+              required: لا يمكنك التسجيل الان الا بعد اضافة معلومات المدرسة
   telegram_webhooks:
     please_wait: "أرجو منك الانتظار قليلا حتى نتمكن من تحميل بياناتك"
     no_thanks: 'لا شكراً'
