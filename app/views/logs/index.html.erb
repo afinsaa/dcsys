@@ -1,27 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Logs</h1>
+<h1><%= t('portal.logs.title') %></h1>
+<div class="card-header py-3">
 
+        
+
+        <form dir="ltr" method="get" action="/log/export.pdf" class="  d-sm-inline-block navbar-search " target="_blank">
+
+            <div class="input-group mb-3">
+            <% if !params[:search_val].blank? %>
+                <%= link_to content_tag(:span,' ', class: 'fa fa-times'), action , :title => 'remove', :class => 'btn ' %>
+                <% end %>
+                <input name="search_val" value="<%= !params[:search_val].blank? ? params[:search_val] : ''%>" type="date" class="form-control bg-grey " placeholder="<%=t('portal.topbar.search.placeholders.default')%>" aria-label="Search" >
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-download fa-sm"></i>
+                    </button>
+                    
+                </div>
+                
+            </div>
+
+        </form>
+    </div>
  <div class="card-body">
   <div class="table-responsive">
     <table class="table table-bordered dataTable">
 
   <thead>
     <tr>
-      
-      <th>Student</th>
+      <th><%= t('portal.logs.student_id') %></th>
+      <th><%= t('portal.logs.student_name') %></th>
       <% if current_user.has_role? :Admin %>
-      <th>User</th>
+      <th><%= t('portal.logs.user_id') %></th>
       <% end %>
-      <th>Tawaklna s</th>
-      <th>Time</th>
+      <th><%= t('portal.logs.tawaklna_s') %></th>
+      <th><%= t('portal.logs.time') %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @logs.each do |log| %>
       <tr>
-        
+        <td><%= log.student.sid %></td>
         <td><%= log.student.name %></td>
         <% if current_user.has_role? :Admin %>
         <td><%= log.user.name %></td>

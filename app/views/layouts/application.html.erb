@@ -56,18 +56,33 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" dir="<%= t('dir')%>">
 
+                    <% if can? :manage, Student %>
+                            
+                    <% else %>
+                        <p class="alert alert-danger">
+                            <%= t('portal.no_school.alert')%>
+                            <a class="btn  btn-light" href="https://wa.me/966581251777">  <i class="fab fa-whatsapp"></i></a>
+                        </p>
+                    <% end %>
                     <% if notice %>
                     <p class="alert alert-success"><%= notice %></p>
                     <% end %>
                     <% if alert %>
-                    <p class="alert alert-danger"><%= alert %></p>
+                    <p class="alert alert-danger">
+                        
+                    <%= alert %></p>
                     <% end %>
                     <% if flash[:error] %>
                     <p class="alert alert-danger"><%= flash[:error].join("<br/>").html_safe %></p>
                     <% end %>
 
                     <main role="main">
-                        <%= content_for?(:content) ? yield(:content) : yield %>
+                        <div class="card shadow mb-4">
+
+                            <div class="card-header py-3">
+                                <%= content_for?(:content) ? yield(:content) : yield %>
+                            </div>
+                        </div>
                     </main>
                 </div>
                 <!-- /.container-fluid -->

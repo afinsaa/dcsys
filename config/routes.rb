@@ -2,18 +2,15 @@ Rails.application.routes.draw do
   
   
   # scope "/:locale", locale: /en|ar/ do
-    resources :logs
+    
     
     devise_for :users, controllers: {
       sessions: 'users/sessions'
     }
     
-
-    resources :dashboard do
-      
-      
-    end
-    get 'dashboard/terms'
+    resources :dashboard, only: [:index]
+    
+    get 'terms', to: 'dashboard#terms'
 
     resources :users do
       # collection do
@@ -21,18 +18,21 @@ Rails.application.routes.draw do
       # end
     end
     
-
+    resources :logs, only: [:index, :show]
+    get 'log/download', to: 'logs#download'
+    get 'log/export', to: 'logs#export'
     
     resources :students do
       collection do
         get :upload
+        get 'export_all'
         post :import
         post :lookup
         delete 'delete_all'
       end
     end
 
-    resources :schools
+    resources :schools 
     # get 'qr_codes/index'
     get 'checkin', to: 'qr_codes#index'
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

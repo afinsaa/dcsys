@@ -29,6 +29,8 @@ class Ability
 
     end 
     
+    return unless user.has_role? :Moderator  # additional permissions for administrators
+    can :manage, Log   
     
     # The first argument to `can` is the action you are giving the user
     # permission to do.

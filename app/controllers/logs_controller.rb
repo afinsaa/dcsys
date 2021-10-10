@@ -2,10 +2,34 @@ class LogsController < ApplicationController
   # before_action :set_log, only: %i[ show edit update destroy ]
   before_action :set_qr_data, only: :create
   # GET /logs or /logs.json
+  
   def index
-    
 
     @pagy, @logs = pagy(Log.accessible_by(current_ability))
+    
+    respond_to do |format|
+      format.html 
+      format.pdf { render :layout => false }
+    end
+
+  end
+
+  def export
+    if params[:search_val].blank?
+      @logs = Log.accessible_by(current_ability)
+
+    else
+      search_val = params[:search_val]
+      @logs = Log.search(search_val).accessible_by(current_ability)
+      if @logs.count == 0
+        render :index, status: "no results"
+      end
+    end
+    
+    
+    respond_to do |format|
+      format.pdf { render :layout => false }
+    end
   end
 
   
@@ -34,12 +58,12 @@ class LogsController < ApplicationController
     # end
     
     user = current_user
-    if (Student.exists?(sid: @qr_data) )
-      student = Student.where(sid: @qr_data, school_id: current_user.school_id).first
+    if (Student.exists?(qrcode: @qr_data) )
+      student = Student.where(qrcode: @qr_data, school_id: current_user.school_id).first
       qr_code = Log.create(student: student, user: user, tawaklna_s: student.tawaklna_s)
       @tawaklnaClass = ""
       case student.tawaklna_s
-      when "clear"
+      when "ammune"
         @tawaklnaClass = "green"
       when "infected"
         @tawaklnaClass = "brown"
@@ -68,6 +92,12 @@ class LogsController < ApplicationController
       else
         @tawaklnaClass = "green"
       end
+
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @book }
+        format.pdf { render :layout => false }
+      end
   end
 
   # PATCH/PUT /logs/1 or /logs/1.json
@@ -90,6 +120,36 @@ class LogsController < ApplicationController
     #   format.html { redirect_to logs_url, notice: "Log was successfully destroyed." }
     #   format.json { head :no_content }
     # end
+  end
+
+  def download
+    require 'csv'
+    require 'prawn'
+
+    file = "#{Rails.root}/public/assets/reports/logs_data.csv"
+    # pdf = WickedPdf.new.pdf_from_string('<h1>Hello There!</h1>', {temp_path: "your path here")
+    
+    pdf = Prawn::Document.new
+    pdf.text(file)
+    
+    table = Log.all;0 # ";0" stops output.  Change "User" to any model.
+    if Log.all.count > 0
+      csv_string = CSV.open( file, 'w' ) do |writer|
+        writer << table.first.attributes.map { |a,v| a }
+        table.each do |s|
+          writer << s.attributes.map { |a,v| v }
+        end
+      end
+    end
+
+    
+    # pdf.render_file('csv.pdf')
+    
+    send_data pdf.render, filename: "cvs.pdf",type: "application/pdf"
+
+    # send_data(csv_string,
+    #   :type => 'text/csv; charset=utf-8; header=present',
+    #   :filename => file)
   end
 
   private

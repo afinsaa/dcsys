@@ -1,16 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Students</h1>
-
+<h1><%= t('portal.student.title') %></h1>
+<div class="card-header py-3">
+  <div class="row">
+      <div class="col-md-8">
+          <a href="<%= new_student_path %>" class="btn btn-info">
+              <i class="fa fa-plus"></i>
+          </a>
+          <a href="<%= upload_students_path %>" class="btn btn-info">
+              <i class="fa fa-upload"></i>
+          </a>
+          <%= link_to content_tag(:span,'', class: 'fa fa-trash-alt'), delete_all_students_path ,data: {:confirm => t('portal.forms.delete_all.confirm')}, :method => :delete, :class => 'btn btn-danger' %>
+      <a href="/students/export_all.pdf" class="btn btn-info" target="_blank">
+          <i class="fa fa-id-badge"></i>
+      </a>
+    </div>
+  </div>
+</div>
  <div class="card-body">
   <div class="table-responsive">
     <table class="table table-bordered dataTable">
       <thead>
         <tr>
-          <th>Sid</th>
-          <th>Name</th>
-          <th>Tawaklna s</th>
-          <th>School</th>
+          <th><%= t('portal.student.sid') %></th>
+          <th><%= t('portal.student.student_name') %></th>
+          <th><%= t('portal.student.tawaklna_s') %></th>
+          <th><%= t('portal.student.school') %></th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -20,11 +35,12 @@
           <tr>
             <td><%= student.sid %></td>
             <td><%= student.name %></td>
-            <td><%= student.tawaklna_s %></td>
+            <td><%=  t(student.tawaklna_s, scope: 'portal.student.status') %></td>
+            
             <td><%= student.school.name %></td>
-            <td><%= link_to 'Show', student %></td>
-            <td><%= link_to 'Edit', edit_student_path(student) %></td>
-            <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to t('portal.forms.show'), student %></td>
+            <td><%= link_to t('portal.forms.edit'), edit_student_path(student) %></td>
+            <td><%= link_to t('portal.forms.delete_i'), student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
@@ -34,5 +50,3 @@
   <%= render partial: 'layouts/nav', locals: {pagy: @pagy} %>
 <br>
 
-<%= link_to 'New Student', new_student_path %>
-<%= link_to 'Upload Twaklna File', upload_students_path %>

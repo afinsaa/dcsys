@@ -1,13 +1,20 @@
 
 <h1><%= t('portal.qrcode.checkin.title')%></h1>
+<br/>
+<% if current_user.has_role? :Moderator %>
 
-<div class="col-md-12 text-center">
-    <div class="alert alert-warning"><%= t('portal.qrcode.checkin.info')%> <i class="fas fa-qrcode"></i></div>
-  <video id="video" width="500" height="400"></video>
-  <label class="breadcrumb p-2">Result:</label>
-    <pre><code id="result"></code></pre>
-</div>
-
-
-
+  <div class="row text-center">
+      <div class="alert alert-warning"><%= t('portal.qrcode.checkin.info')%> <i class="fas fa-qrcode"></i></div>
+    <video id="video" width="500" height="400" class=""></video>
+    <label class="breadcrumb p-2">Result:</label>
+      <pre><code id="result"></code></pre>
+  </div>
 <%= javascript_pack_tag("basic-qr-code-reader") %>
+<% else %>
+  <div class="col-md-12 text-center">
+      <div class="alert alert-warning"><%= t('portal.qrcode.checkin.no_school')%> <i class="fas fa-qrcode"></i></div>
+  </div>
+<% end %>
+
+
+

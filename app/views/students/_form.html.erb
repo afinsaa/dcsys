@@ -11,28 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :sid %>
-    <%= form.text_field :sid %>
+  <div class="row">
+
+    <div class="form-group col-md-6">
+        <%= form.label :name  %><br />
+        <%= form.text_field  :name, class: 'form-control form-control-user' %>
+    </div>
+
+    <div class="form-group col-md-6">
+    <%= form.label :tawaklna_s %><br />
+    <%= form.select :tawaklna_s, Student::Status.collect {|p| [ t(p, scope: 'portal.user.user_types'), p ] },{:include_blank => true},{:class => 'form-control '}  %>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :tawaklna_s %>
-    <%= form.text_field :tawaklna_s %>
-  </div>
   <% if current_user.has_role? :Admin %>
-    <div class="field">
+    <div class="form-group col-md-6">
       <%= form.label :school_id %>
       <%= collection_select(:student, :school_id, School.all, :id, :name, {:include_blank => true},{:class => ' list-search form-control'})  %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <div class="actions row">
+    <div class="form-group  col-md-6">
+        <%= form.submit t('portal.forms.create.button'), class: 'btn btn-primary btn-block' %>
+    </div>
+    
+</div>
 <% end %>

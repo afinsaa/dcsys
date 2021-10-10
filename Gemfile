@@ -30,6 +30,8 @@ gem 'rails-i18n', '~> 6.0.0'
 
 gem 'cancancan'
 gem 'smarter_csv'
+gem 'prawn-rails'
+gem 'prawn-arabic'
 gem 'activerecord-import'
 gem "roo", "~> 2.8"
 

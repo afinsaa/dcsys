@@ -1,29 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="card-header py-3">
+  <div class="row">
+      <div class="col-md-8">
+          <a href="<%= students_path %>" class="btn btn-info">
+              <i class="fa fa-list"></i>
+          </a>
+          <a href="<%= edit_student_path(@student) %>" class="btn btn-info">
+              <i class="fa fa-pen"></i>
+          </a>
+          <a href="/students/<%= @student.id%>.pdf" class="btn btn-info" target="_blank">
+            <i class="fa fa-id-badge"></i>
+          </a>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="row">
 
-<p class="breadcrumb p-2">
-  <strong>Sid:</strong>
-  <%= @student.sid %>
-</p>
+    <div class="form-group col-md-6">
+        <%= t('portal.student.sid')  %><br />
+        <%= @student.sid %>
+    </div>
 
-<p class="breadcrumb p-2">
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
+    <div class="form-group col-md-6">
+        <%= t('portal.student.student_name')  %><br />
+        <%= @student.name %>
+    </div>
 
-<p class="breadcrumb p-2">
-  <strong>Tawaklna s:</strong>
-  <%= @student.tawaklna_s %>
-</p>
+</div>
 
-<p class="breadcrumb p-2">
-  <strong>School:</strong>
-  <%= @student.school_id %>
-</p>
+<div class="row">
 
-<p class="breadcrumb p-2">
-  <strong>QR Code:</strong>
-  <%= image_tag("tmp/tmpqr_#{current_user.id}.png") %>
-</p>
+    <div class="form-group col-md-6">
+        <%= t('portal.student.tawaklna_s')  %><br />
+        <%=  t(@student.tawaklna_s, scope: 'portal.student.status') %>
+    </div>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+  <% if current_user.has_role? :Admin %>
+      <div class="form-group col-md-6">
+          <%= t('portal.student.school_id')  %><br />
+          <%= @student.school_id %>
+      </div>
+  <% end %>
+</div>
+
+
+<div class="row">
+
+    <div class="form-group col-md-12 text-center">
+        <%= t('portal.student.qrcode')  %><br />
+        <img src="<%= url_for (@student.qrimage) %>" />
+    </div>
+
+  
+</div>
+
+
+

@@ -5229,7 +5229,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .list-group-item-action {
   width: 100%;
-  color: #6e707e;
+  color: #fafbff;
   text-align: inherit;
 }
 
@@ -10810,7 +10810,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: image-url("login_bg.jpg");
+  background: image-url("qr_login_bg.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -11258,4 +11258,10 @@ body.sidebar-toggled footer.sticky-footer {
   background: linear-gradient(0deg, rgba(36,15,0,1) 0%, rgba(130,60,15,1) 48%, rgba(218,134,3,1) 100%);
   
   
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10%;
 }

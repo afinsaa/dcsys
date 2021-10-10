@@ -28,7 +28,7 @@
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li> -->
-    <%= nav_item t('portal.sidebar.dashboard'), root_path , 'fa-tachometer-alt' %>
+    <%= nav_item t('portal.sidebar.dashboard'), dashboard_index_path , 'fa-tachometer-alt' %>
 
    
     <!-- Nav Item - Dashboard -->
@@ -96,7 +96,7 @@
 
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    
 
     <!-- Nav Item - Charts -->
     <!-- <li class="nav-item">
@@ -109,7 +109,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
-    <%= nav_item_blank t('portal.sidebar.terms'), dashboard_terms_path, 'fa-file-contract' %>
+    <%= nav_item t('portal.sidebar.terms'), terms_path, 'fa-file-contract' %>
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

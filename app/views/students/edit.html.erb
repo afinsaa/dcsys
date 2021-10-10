@@ -1,6 +1,18 @@
-<h1>Editing Student</h1>
+<div class="card-header py-3">
+  <div class="row">
+      <div class="col-md-8">
+          <a href="<%= students_path %>" class="btn btn-info">
+              <i class="fa fa-list"></i>
+          </a>
+          <a href="<%= student_url(@student) %>" class="btn btn-info">
+              <i class="fa fa-eye"></i>
+          </a>
+          
+    </div>
+  </div>
+</div>
+<br/>
 
 <%= render 'form', student: @student %>
 
-<%= link_to 'Show', @student %> |
-<%= link_to 'Back', students_path %>
+
