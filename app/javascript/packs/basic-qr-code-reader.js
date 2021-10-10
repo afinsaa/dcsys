@@ -22,7 +22,7 @@ codeReader
     // Send QR code data as JSON to the 
     // qr_codes#create action using Rails ujs
     Rails.ajax({
-      url: "/en/logs",
+      url: "/logs",
       type: "post",
       data: formData
     });
