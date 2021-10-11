@@ -113,9 +113,12 @@ ar:
       student_name: 'اسم الطالب'
       tawaklna_s: 'الحالة الصحية'
       status:
-        ammune: 'محصن'
-        first_dose: 'جرعة أولى'
+        immune: 'محصن'
+        incomplete: 'لم يكمل الجرعات'
+        exampted: 'مصرح له'
+        exposed: 'مخالط'
         infected: 'مصاب'
+        undifined: 'غير معروف'
       school: 'المدرسة'
       import:
         noor_giudeline: 'يجب استيراد ملفات النور الخاصة الاتية بالترتيب:'

@@ -20,7 +20,7 @@
 
     <div class="form-group col-md-6">
     <%= form.label :tawaklna_s %><br />
-    <%= form.select :tawaklna_s, Student::Status.collect {|p| [ t(p, scope: 'portal.user.user_types'), p ] },{:include_blank => true},{:class => 'form-control '}  %>
+    <%= form.select :tawaklna_s, Student::Status.collect {|p| [ t(p, scope: 'portal.student.status'), p ] },{:include_blank => true},{:class => 'form-control '}  %>
     </div>
 
   </div>

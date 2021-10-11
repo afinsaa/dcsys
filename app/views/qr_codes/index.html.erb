@@ -6,8 +6,18 @@
   <div class="row text-center">
       <div class="alert alert-warning"><%= t('portal.qrcode.checkin.info')%> <i class="fas fa-qrcode"></i></div>
     <video id="video" width="500" height="400" class=""></video>
+    <% if alert %>
+    <p class="alert alert-danger">
+        
+    <%= alert %></p>
+    <% end %>
+    <br/>
     <label class="breadcrumb p-2">Result:</label>
       <pre><code id="result"></code></pre>
+      <div id="loader">
+        <div  class="lds-circle"><div></div></div>
+      </div>
+      
   </div>
 <%= javascript_pack_tag("basic-qr-code-reader") %>
 <% else %>

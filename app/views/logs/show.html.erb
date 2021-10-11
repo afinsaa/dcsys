@@ -1,12 +1,26 @@
-<p id="notice"><%= notice %></p>
-
+<div class="card-header py-3">
+  <div class="row">
+      <div class="col-md-8">
+          <a href="<%= logs_path %>" class="btn btn-info">
+              <i class="fa fa-list"></i>
+          </a>
+          
+          <a href="<%= checkin_path %>" class="btn btn-info">
+              <i class="fa fa-camera"></i>
+          </a>
+          
+    </div>
+  </div>
+</div>
+<br/>
 <div class="alert alert-<%= @tawaklnaClass %>">
 
   <div class="row col-md-12">
     <div class="col-md-6">
     <p>
-      <small>Student:</small>
+      <small><%= t('portal.student.sid')  %></small>
       <h4><%= @log.student.sid %></h4>
+      <%= t('portal.student.student_name')  %><br />
       <h1><%= @log.student.name %></h1>
     </p>
     </div>
@@ -14,14 +28,14 @@
 
     <div class="col-md-6">
       <p>
-        <small>Tawaklna Status:</small>
-        <h1><%= @log.tawaklna_s %></h1>
+        <small><%= t('portal.student.tawaklna_s')  %><br /></small>
+        <h1><%=  t(@log.tawaklna_s, scope: 'portal.student.status') %></h1>
       </p>
     </div>
   </div>
 
   <p>
-    <strong>Check in time:</strong>
+    <strong> <%= t('portal.logs.time')  %><br /></strong>
     <%= @log.created_at %>
   </p>
 
@@ -32,5 +46,3 @@
   <h6 class="breadcrumb p-2"><strong>User: </strong> <%= @log.user.name %></h6>
 </p>
 
-<%= link_to 'Edit', edit_log_path(@log) %> |
-<%= link_to 'Back', logs_path %>

@@ -57,23 +57,23 @@ class LogsController < ApplicationController
     #   end
     # end
     
-    user = current_user
-    if (Student.exists?(qrcode: @qr_data) )
-      student = Student.where(qrcode: @qr_data, school_id: current_user.school_id).first
-      qr_code = Log.create(student: student, user: user, tawaklna_s: student.tawaklna_s)
-      @tawaklnaClass = ""
-      case student.tawaklna_s
-      when "ammune"
-        @tawaklnaClass = "green"
-      when "infected"
-        @tawaklnaClass = "brown"
-      else
-        @tawaklnaClass = "green"
-      end
-      redirect_to log_path(qr_code)
-    else
-      redirect_to log_path(nil), error: 'Student does not exist'
-    end
+    # user = current_user
+    # if (Student.exists?(qrcode: @qr_data) )
+    #   student = Student.where(qrcode: @qr_data, school_id: current_user.school_id).first
+    #   qr_code = Log.create(student: student, user: user, tawaklna_s: student.tawaklna_s)
+    #   @tawaklnaClass = ""
+    #   case student.tawaklna_s
+    #   when "ammune"
+    #     @tawaklnaClass = "green"
+    #   when "infected"
+    #     @tawaklnaClass = "brown"
+    #   else
+    #     @tawaklnaClass = "green"
+    #   end
+    #   redirect_to log_path(qr_code)
+    # else
+    #   render :index, error: 'Student does not exist'
+    # end
     
 
     
@@ -85,12 +85,14 @@ class LogsController < ApplicationController
     @tawaklnaClass = ""
     
       case @log.student.tawaklna_s
-      when "clear"
+      when "immune"
         @tawaklnaClass = "green"
       when "infected"
         @tawaklnaClass = "brown"
+      when "exposed"
+        @tawaklnaClass = "yellow"
       else
-        @tawaklnaClass = "green"
+        @tawaklnaClass = "grey"
       end
 
       respond_to do |format|

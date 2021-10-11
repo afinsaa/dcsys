@@ -2,7 +2,7 @@ class Student < ApplicationRecord
   belongs_to :school
   has_one_attached :qrimage
 
-  Status = [:ammune, :first_dose ,:infected]
+  Status = [:immune, :exampted,  :incomplete, :exposed, :infected]
 
   def self.search(search)  
     where("sid LIKE :search ", search: "%#{search}%")  

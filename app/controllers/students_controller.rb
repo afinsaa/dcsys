@@ -63,7 +63,7 @@ class StudentsController < ApplicationController
     
     
     genQRcode = rand.to_s[2..11]
-    @student.qrcode = genQRcode
+    @student.qrcode = "#{genQRcode}#{current_user.id}"
 
     respond_to do |format|
       if @student.save
@@ -162,7 +162,7 @@ class StudentsController < ApplicationController
           student.school_id = current_user.school_id
 
           genQRcode = rand.to_s[2..11]
-          student.qrcode = genQRcode
+          student.qrcode = "#{genQRcode}#{current_user.id}"
       
           qrcode = RQRCode::QRCode.new("#{genQRcode}#{current_user.id}")
 

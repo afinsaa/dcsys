@@ -11248,7 +11248,7 @@ body.sidebar-toggled footer.sticky-footer {
 .alert-green {
   color: #fff;
   background: rgb(18,36,0);
-  background: linear-gradient(0deg, rgba(18,36,0,1) 0%, rgba(12,45,2,1) 16%, rgba(112,182,110,1) 100%);
+  background: linear-gradient(0deg, rgba(18,36,0,1) 0%, rgb(30, 99, 9) 16%, rgb(152, 224, 149) 100%);
   
 }
 
@@ -11260,8 +11260,53 @@ body.sidebar-toggled footer.sticky-footer {
   
 }
 
+.alert-yellow {
+  color: rgb(155, 113, 59);
+  background: rgb(255, 182, 46);
+  background: linear-gradient(0deg, rgb(243, 155, 55) 0%, rgb(245, 214, 129) 48%, rgb(243, 233, 217) 100%);
+  
+  
+}
+
+.alert-grey {
+  color: rgb(68, 66, 66);
+  background: rgb(150, 139, 131);
+  background: linear-gradient(0deg, rgb(105, 105, 105) 0%, rgb(197, 197, 197) 48%, rgb(197, 197, 197) 100%);
+  
+  
+}
+
 video {
   max-width: 100%;
   height: auto;
   border-radius: 10%;
+}
+
+.lds-circle {
+  display: inline-block;
+  transform: translateZ(1px);
+}
+.lds-circle > div {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  background: rgb(87, 92, 109);
+  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+@keyframes lds-circle {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(1800deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    transform: rotateY(3600deg);
+  }
 }

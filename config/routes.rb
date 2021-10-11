@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       # end
     end
     
-    resources :logs, only: [:index, :show]
+    resources :logs, only: [:index, :create, :show]
     get 'log/download', to: 'logs#download'
     get 'log/export', to: 'logs#export'
     
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :schools 
     # get 'qr_codes/index'
     get 'checkin', to: 'qr_codes#index'
+    post 'checkin', to: 'qr_codes#create'
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     
 
