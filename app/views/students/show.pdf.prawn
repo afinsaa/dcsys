@@ -37,7 +37,7 @@ prawn_document do |pdf|
        
       ],
       [
-         {:image => s.qrimage.url, width: 50, :position => :center}
+         {:image => ActiveStorage::Blob.service.send(s.qrimage.url), width: 50, :position => :center}
       ],
       [
         nameCell
