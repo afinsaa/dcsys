@@ -37,7 +37,7 @@ prawn_document do |pdf|
        
       ],
       [
-         {:image => ActiveStorage::Service::S3Service(s.qrimage.key), width: 50, :position => :center}
+         {:image => ActiveStorage::Service.download(s.qrimage.key), width: 50, :position => :center}
       ],
       [
         nameCell
