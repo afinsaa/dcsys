@@ -38,3 +38,10 @@ amazon:
   secret_access_key: <%= ENV['BUCKETEER_AWS_SECRET_ACCESS_KEY'] %>
   region: <%= ENV['BUCKETEER_AWS_REGION'] %>
   bucket: <%= ENV['BUCKETEER_BUCKET_NAME'] %>
+
+tamazon:
+  service: S3
+  access_key_id: AKIARVGPJVYVJQK5SMUK
+  secret_access_key: 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
+  region: eu-west-1
+  bucket: bucketeer-c5bf2a24-45d2-4166-a0d8-1bd12b313b5a

@@ -3,7 +3,7 @@
 prawn_document do |pdf|
   pdf.font Rails.root.join('app/assets/fonts/GE_SS_Unique_Light.otf')
   # pdf.font.size = 13
-  pdf.text ("- منصة حصين - #{current_user.school.name}").fix_arabic_glyphs, :position => :center
+  pdf.text ("منصة حصين - #{current_user.school.name}").fix_arabic_glyphs, :position => :center
   pdf.font "Helvetica"
   pdf.move_down 20
   # pdf.table [['d']]
@@ -28,16 +28,20 @@ prawn_document do |pdf|
     #   resize_gte_to: false,
     #   size: 120
     # )
-    
+    fUrl = ""
+    File.open(Rails.root.join('app/assets/images', 'tmp', "tmpqr#{current_user.id}.png"), 'wb') do |f|
+      f.write(s.qrimage.download)
+      fUrl = f.path
+    end
 
-    nameCell = pdf.make_cell(content: s.name.fix_arabic_glyphs, borders: [], size: 10, :text_color => "000000", padding: [0,5,5,0], font: Rails.root.join('app/assets/fonts/GE_SS_Unique_Light.otf'))
+    nameCell = pdf.make_cell(content: s.name.fix_arabic_glyphs, borders: [], size: 10, :text_color => "000000", padding: [0,0,0,0], font: Rails.root.join('app/assets/fonts/GE_SS_Unique_Light.otf'))
     sCard = [
       [
         s.sid
        
       ],
       [
-         {:image => ActiveStorage::Blob.service.download( s.qrimage.url), width: 50, :position => :center}
+         {:image => fUrl, width: 50, :position => :center}
       ],
       [
         nameCell
