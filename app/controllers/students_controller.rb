@@ -191,11 +191,14 @@ class StudentsController < ApplicationController
             filename: 'image.jpg'
           })
 
-          if student.save!
+          if Student.exists?(sid: row[0], school_id: current_user.school_id)
           # students << student
-            created_student_counter += 1
-          else
+            s = Student.where(sid: row[0], school_id: current_user.school_id).first
+            s.update(name: row[1], tawaklna_s: row[2])
             error_student_counter += 1
+          else
+            student.save!
+            created_student_counter += 1
           end
 
         end

@@ -227,9 +227,9 @@ ar:
       terms: 'الإتفاقية'
     dashboard:
       users: 'مستخدمي النظام'
-      botad_users: 'عدد الطلاب'
-      satisfaction: 'مستوى الاحترازية'
-      daily_chats_count: 'عدد المحادثات اليومية'
+      botad_users: 'عدد السجلات'
+      attendes: 'مستوى الاحترازية'
+      daily_attendies_count: 'عدد الحضور اليوم'
       students_count: 'عدد الطلاب'
       classes_count: 'عدد الحصص'
       teachers_count: 'عدد المعلمين'
