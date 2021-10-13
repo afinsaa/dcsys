@@ -16,19 +16,24 @@ class DashboardController < ApplicationController
         # @complaints = Complaint.accessible_by(current_ability).count
         log_count = Log.accessible_by(current_ability).count
 
+        @closed_complaints = Student.accessible_by(current_ability).where(tawaklna_s: :incomplete).count
+        @open_complaints = Student.accessible_by(current_ability).where(tawaklna_s: :immune).count    
+  
+
+
         if current_user.has_role? :Admin
             p "you are admin"
           daily_attendes = Log.where('created_at >= ? ', Date.today.beginning_of_day)
           monthly_counts = Log.select("DATE_FORMAT( created_at, '%M') as month, COUNT(id) as total ").group("month")
-          healthy_students = Log.where(tawaklna_s: 'healthy').count
-          sick_students = Log.where(tawaklna_s: 'sick').count
+          healthy_students = Log.where(tawaklna_s: :immune).count
+          sick_students = Log.where(tawaklna_s: :exposed).count
 
         else
           
           daily_attendes = Log.where('created_at >= ? and user_id = ?', Date.today.beginning_of_day, current_user.id)
           monthly_counts = Log.select("DATE_FORMAT( created_at, '%M') as month, COUNT(id) as total ").where(user_id: current_user.id).group("month")
-          healthy_students = Log.where(tawaklna_s: 'healthy', user_id: current_user.id).count
-          sick_students = Log.where(tawaklna_s: 'sick', user_id: current_user.id).count
+          healthy_students = Log.where(tawaklna_s: :immune, user_id: current_user.id).count
+          sick_students = Log.where(tawaklna_s: :exposed, user_id: current_user.id).count
 
         end
 

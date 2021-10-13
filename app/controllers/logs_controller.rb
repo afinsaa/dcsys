@@ -15,21 +15,37 @@ class LogsController < ApplicationController
   end
 
   def export
+    require 'date'
     if params[:search_val].blank?
       @logs = Log.accessible_by(current_ability)
-
+      if @logs.count == 0
+        flash[:alert] = t('portal.logs.no_result')
+        redirect_to logs_url
+      else
+        respond_to do |format|
+          format.pdf { render :layout => false }
+        end
+      end
     else
       search_val = params[:search_val]
-      @logs = Log.search(search_val).accessible_by(current_ability)
-      if @logs.count == 0
-        render :index, status: "no results"
+      if search_val.valid_date?
+        @logs = Log.search(search_val).accessible_by(current_ability)
+        if @logs.count == 0
+          flash[:alert] = t('portal.logs.no_result')
+          redirect_to logs_url
+        else
+          respond_to do |format|
+            format.pdf { render :layout => false }
+          end
+        end
+      else
+        flash[:alert] = t('portal.logs.no_result')
+        redirect_to logs_url
       end
     end
     
     
-    respond_to do |format|
-      format.pdf { render :layout => false }
-    end
+    
   end
 
   
@@ -97,7 +113,6 @@ class LogsController < ApplicationController
 
       respond_to do |format|
         format.html # show.html.erb
-        format.xml  { render :xml => @book }
         format.pdf { render :layout => false }
       end
   end
@@ -158,6 +173,11 @@ class LogsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_log
       @log = Log.find(params[:id])
+    end
+
+    
+    def valid_date?( str, format="%m-%d-%Y" )
+      Date.strptime(str,format) rescue false
     end
 
     # Only allow a list of trusted parameters through.

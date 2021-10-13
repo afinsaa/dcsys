@@ -8,7 +8,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Closed", "Open"],
+    labels: ["Incomplete", "Immune"],
     datasets: [{
       data: [closed_complaints, open_complaints],
       backgroundColor: ['#df504e', '#1cc88a'],

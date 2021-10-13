@@ -10,7 +10,7 @@ class QrCodesController < ApplicationController
     respond_to do |format|
       if (Student.exists?(qrcode: @qr_data) )
         student = Student.where(qrcode: @qr_data, school_id: current_user.school_id).first
-        @log = Log.create(student: student, user: user, tawaklna_s: student.tawaklna_s)
+        @log = Log.create(student: student, sid: student.sid, user: user, tawaklna_s: student.tawaklna_s)
         @tawaklnaClass = ""
         case student.tawaklna_s
         when "immune"

@@ -5,13 +5,13 @@
 
         
 
-        <form dir="ltr" method="get" action="/log/export.pdf" class="  d-sm-inline-block navbar-search " target="_blank">
+        <form dir="ltr" method="get" action="/log/export.pdf" class="  d-sm-inline-block " target="_blank">
 
-            <div class="input-group mb-3">
+            <div class="input-group col-md-12 mb-1 ">
             <% if !params[:search_val].blank? %>
                 <%= link_to content_tag(:span,' ', class: 'fa fa-times'), action , :title => 'remove', :class => 'btn ' %>
                 <% end %>
-                <input name="search_val" value="<%= !params[:search_val].blank? ? params[:search_val] : ''%>" type="date" class="form-control bg-grey " placeholder="<%=t('portal.topbar.search.placeholders.default')%>" aria-label="Search" >
+                <input name="search_val" value="<%= !params[:search_val].blank? ? params[:search_val] : ''%>" type="date" class="form-control" placeholder="<%=t('portal.topbar.search.placeholders.default')%>" aria-label="Search" >
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit">
                         <i class="fas fa-download fa-sm"></i>
@@ -42,8 +42,8 @@
   <tbody>
     <% @logs.each do |log| %>
       <tr>
-        <td><%= log.student.sid %></td>
-        <td><%= log.student.name %></td>
+        <td><%= log.sid %></td>
+        <td><%= log.student != nil ? log.student.name : 'deleted' %></td>
         <% if current_user.has_role? :Admin %>
         <td><%= log.user.name %></td>
         <% end %>

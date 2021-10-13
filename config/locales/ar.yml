@@ -19,6 +19,8 @@ ar:
       user: 'المستخدم'
       student_name: 'الطالب'
       time: 'وقت الدخول'
+      no_result: 'لا يوجد نتائج في التاريخ المحدد'
+      not_valid_date: 'فضلا قم بادخال تاريخ صحيح'
     customer:
       page_title: 'معلومات العملاء'
       page_desc: 'بيانات عملاءنا المدارس، يمكنكم تعديل او اضافة بيناتهم'
@@ -37,6 +39,7 @@ ar:
       complete_fill_up_form: 'نشكرك على وقتك في تعبئة استمارة التسجيل و نتشرف بانضمامكم لنا في نظام وكيل، سيتواصل معك ممثل خدمة العملاء قريبا لاستكمال اجراءات التسجيل'
     login:
       welcome_sign: 'مرحبا بعودتك'
+      signup: 'التسجيل'
       email_placeholder: 'البريد الإلكتروني'
       password_placeholder: 'كلمة المرور'
       change_pw: 'إعادة ضبط كلمة المرور'
@@ -45,6 +48,7 @@ ar:
       log_in: 'دخول'  
       resend_unlock_inst: 'إعادة إرسال رابط فتح الحساب'
       resend_unlock_btn: 'إعادة إرسال رابط فتح الحساب'
+      confirm_my_account: 'تأكيد حسابي'
       links:
         have_account: 'لديك حساب؟ سجل دخولك!'
         forgot_pw: 'نسيت كلمة المرور؟'
@@ -52,6 +56,7 @@ ar:
         no_unlock: 'لم تستلم اعدادات الفتح؟'
         forgot_desc: 'لتحصل على رابط تغيير كلمة المرور، نرجوا ادخال بريدك الإلكتروني لكي نرسله لك..'
         send_inst_btn: 'ارسلي لي رابط تغيير كلمة المرور'
+        send: 'ارسل'
     mailer:
       confirmation:
         welcome: 'مرحبا'
@@ -146,8 +151,7 @@ ar:
       updated_by: 'المحدث'
       import:
         title: 'بإمكناك إستيراد البينات من خلال ملفات اكسل بصيغة CVS'
-        title_noor: 'بإمكناك إستيراد البينات من خلال ملفات اكسل، اختر نوع الرفع إما عن طريق صيغة CVS أو ملفات مصدرة من نظام توكلنا'
-        
+        title_noor: 'بإمكناك إستيراد البينات من خلال ملفات اكسل، اختر نوع الرفع إما عن طريق صيغة CVS أو ملفات مصدرة من نظام توكلنا'  
         choose_file: 'أختر الملف'
         import_button: 'إستيراد'
         success: 'تم استيراد البيانات بنجاح'
@@ -168,6 +172,8 @@ ar:
         absence: 'ملف الغياب'
         noor: 'ملفات نور'
         smart_school: 'ملفات المدرسة الذكية'
+      login:
+        login: 'تسجيل الدخول'
     profile:
       title: 'بياناتي'
       form:
@@ -207,22 +213,18 @@ ar:
           subject: 'ابحث عن اسم المقرر'
           teacher: 'ابحث عن اسم المعلم، البريد الالكتروني أو رقم الجوال'
           user: 'ابحث عن اسم المستخدم، البريد الالكتروني أو رقم الجوال'
-
     sidebar:
       dashboard: 'لوحة المعلومات'
       guide: 'دليل الاستخدام'
-      setting: 'بيانات العملاء'
-      
+      setting: 'بيانات العملاء'    
       logs: 'السجلات'
       checkin: 'فحص الدخول'
-      users: 'مستخدمي النظام'
-      
+      users: 'مستخدمي النظام'  
       students: 'الطلاب'
       enrollment: 'المشتركين'
       complaints: 'الشكاوي'
       content: 'المرفقات'
       terms: 'الإتفاقية'
-
     dashboard:
       users: 'مستخدمي النظام'
       botad_users: 'عدد الطلاب'
@@ -234,13 +236,11 @@ ar:
       subjects_count: 'عدد المواد'
       visitors_count: 'عدد الزوار'
       download_report: "تصدير التقرير"
-      complaint_overview: 'عدد الإستفسارات'
-      bot_activties: 'عدد المراسلات الشهري'
-      closed_tickets: 'المغلقة'
-      opened_tickets: 'المفتوحة'
+      complaint_overview: 'نسبة التحصين'
+      bot_activties: 'الدخول الشهري'
+      closed_tickets: 'لم يكمل الجرعات'
+      opened_tickets: 'محصن'
       common_paths: 'شعبية خيارات الطلاب'
-
-
       otherStudent: 'استسفارات أو شكاوى'
       training_materials: 'دليل الاستخدام'
       training_desc_html: 'تحتاج معرفة تنفيذ أمراً ما؟ تفضل بزيارة منصة التدريب على استخدام النظام بالفيديو من خلال الضغط  <a target="_blank" rel="nofollow" href="%{link}">هنا</a>.'
@@ -289,15 +289,9 @@ ar:
       student:
         nid: 'الهوية الوطنية'
         sid: 'الرقم الأكاديمي'
-        student_name: 'الاسم الكامل'
-        mobile_no: 'رقم الجوال'
-        gpa: 'المعدل التراكمي'
-        noor_account: 'حساب نور'
-        noor_pw: 'الرقم السري لحساب نور'
-        mdrsti_account: 'حساب منصة مدرستي'
-        mdrsti_pw: 'الرقم السري لحساب المنصة'
-        settings_id: 'المدرسة'
-      
+        name: 'الاسم الكامل'
+        tawaklna_s: 'الحالة الصحية'
+        school_id: 'المدرسة'    
       setting:
         setting: 'العميل'
         school_name: 'اسم المدرسة'
@@ -314,8 +308,7 @@ ar:
         license_type: 'الرخصة'
         contact_phone: 'رقم التواصل'
         contact_name: 'اسم الموظف'
-        expire_date: 'نهاية الخدمة'
-        
+        expire_date: 'نهاية الخدمة'   
       complaint:
         mobile_no: 'رقم الجوال'
         assignee: 'المشرف'
@@ -339,18 +332,14 @@ ar:
     item_name:
       one: "عنصر"
       other: "عناصر"
-
     nav:
       prev: "&lsaquo;&nbsp;السابق"
       next: "التالي&nbsp;&rsaquo;"
       gap: "&hellip;"
-
     info:
       no_items: "ليس هناك %{item_name} "
       single_page_html: "عرض <b>%{count}</b> %{item_name}"
       multiple_pages_html: "عرض <b>%{from} - %{to}</b> %{item_name} من مجموع <b>%{count}</b> "
-
     combo_nav_js: "Page %{page_input} of %{pages}"
-
     items_selector_js: "Show %{items_input} %{item_name} per page"
 
