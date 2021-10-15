@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
     root to: 'dashboard#redirect_to_dashboard'
     
+    match '*a', :to => 'errors#routing', via: :get
   # end
   
   # root to: 'dashboard#redirect_to_dashboard'

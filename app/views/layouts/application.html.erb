@@ -72,9 +72,13 @@
                         
                     <%= alert %></p>
                     <% end %>
-                    <% if flash[:error] %>
+                    <%
+=begin%>
+ <% if flash[:error] %>
                     <p class="alert alert-danger"><%= flash[:error].join("<br/>").html_safe %></p>
-                    <% end %>
+                    <% end %> 
+<%
+=end%>
 
                     <main role="main">
                         <div class="card shadow mb-4">

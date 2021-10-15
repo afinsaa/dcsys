@@ -342,4 +342,13 @@ ar:
       multiple_pages_html: "عرض <b>%{from} - %{to}</b> %{item_name} من مجموع <b>%{count}</b> "
     combo_nav_js: "Page %{page_input} of %{pages}"
     items_selector_js: "Show %{items_input} %{item_name} per page"
-
+  unauthorized:
+    manage:
+      all: "لست مصرح بعملية %{action} %{subject}."
+      user: "لست مصرح بتعديل المستخدمين"
+    update:
+      user: "لست مصرح بتعديل بيانات المستخدم"
+    action_name:
+      model_name: "..." 
+  errors:
+    page_not_found: 'الصفحة المطلوبة غير موجودة، تم تحويلك هنا!'

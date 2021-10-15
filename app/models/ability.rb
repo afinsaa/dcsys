@@ -21,16 +21,14 @@ class Ability
       can :manage, Student, school_id: user.school_id
       can :manage, Log, user_id: user.id
       
-
-      cannot :manage, User
       
 
 
 
     end 
     
-    return unless user.has_role? :Moderator  # additional permissions for administrators
-    can :manage, Log   
+    # return unless user.has_role? :Moderator  # additional permissions for administrators
+    # can :manage, Log   
     
     # The first argument to `can` is the action you are giving the user
     # permission to do.
