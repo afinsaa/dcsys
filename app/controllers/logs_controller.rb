@@ -2,6 +2,7 @@ class LogsController < ApplicationController
   # before_action :set_log, only: %i[ show edit update destroy ]
   before_action :set_qr_data, only: :create
   # GET /logs or /logs.json
+  load_and_authorize_resource
   
   def index
 

@@ -1,6 +1,7 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: %i[ show edit update destroy ]
-
+  load_and_authorize_resource
+  
   # GET /schools or /schools.json
   def index
     @pagy, @schools = pagy(School.accessible_by(current_ability))
