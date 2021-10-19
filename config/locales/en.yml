@@ -1,9 +1,27 @@
 en:
   dir: 'ltr'
-  text_dir: 'right'
-  copyright: "جميع الحقوق محفوظة © 2020 لأفينسا لتقنية المعومات"
+  text_dir: 'left'
+  copyright: "جميع الحقوق محفوظة © 2020 لفترات لتقنية المعومات"
   users: 'المستخدمين'    
   portal:
+    page_title: 'حصين'
+    no_school:
+      alert: 'لست مشتركاً معنا في منصة حصين للفحص و الدخول الاحترازي، نرجو التواصل معنا على رقم الواتسب 0581251777'
+    qrcode:
+      checkin:
+        title: 'فحص الدخول'
+        info: 'قم بتمرير بطاقة رمز QR امام الكاميرا و ستعرف عليها النظام تلقائياً'
+        no_school: 'بعد الاشتراك سيمكنك استخدام هذه الخاصية لقراءة الرمز و تسجيل الدخول'
+    logs:
+      title: 'السجلات'
+      tawaklna_s: 'الحالة الصحية'
+      student_id: 'رقم الهوية'
+      user_id: 'رقم المستخدم'
+      user: 'المستخدم'
+      student_name: 'الطالب'
+      time: 'وقت الدخول'
+      no_result: 'لا يوجد نتائج في التاريخ المحدد'
+      not_valid_date: 'فضلا قم بادخال تاريخ صحيح'
     customer:
       page_title: 'معلومات العملاء'
       page_desc: 'بيانات عملاءنا المدارس، يمكنكم تعديل او اضافة بيناتهم'
@@ -22,15 +40,16 @@ en:
       complete_fill_up_form: 'نشكرك على وقتك في تعبئة استمارة التسجيل و نتشرف بانضمامكم لنا في نظام وكيل، سيتواصل معك ممثل خدمة العملاء قريبا لاستكمال اجراءات التسجيل'
     login:
       welcome_sign: 'مرحبا بعودتك'
+      signup: 'التسجيل'
       email_placeholder: 'البريد الإلكتروني'
       password_placeholder: 'كلمة المرور'
       change_pw: 'إعادة ضبط كلمة المرور'
       new_pw_placeholder: 'ادخل كملة المرور الجديدة'
       re_new_pw_placeholder: 'اعد ادخال كلمة المرور الجديدة'
-      log_in: 'دخول'
-      
+      log_in: 'دخول'  
       resend_unlock_inst: 'إعادة إرسال رابط فتح الحساب'
       resend_unlock_btn: 'إعادة إرسال رابط فتح الحساب'
+      confirm_my_account: 'تأكيد حسابي'
       links:
         have_account: 'لديك حساب؟ سجل دخولك!'
         forgot_pw: 'نسيت كلمة المرور؟'
@@ -38,7 +57,7 @@ en:
         no_unlock: 'لم تستلم اعدادات الفتح؟'
         forgot_desc: 'لتحصل على رابط تغيير كلمة المرور، نرجوا ادخال بريدك الإلكتروني لكي نرسله لك..'
         send_inst_btn: 'ارسلي لي رابط تغيير كلمة المرور'
-
+        send: 'ارسل'
     mailer:
       confirmation:
         welcome: 'مرحبا'
@@ -62,21 +81,33 @@ en:
         change_link: 'إعادة ضبط كلمة المرور'
         notifier_1: 'إذا لم تقم بطلب إعادة ضبط كلمة المرور، نرجوا تجاهل هذا البريد.' 
         notifier_2: 'كلمة المرور الخاصة بك لن تتغير إلا في حالة دخول الرابط أعلاه وإدخال كلمة مرور جديدة.'
-    user:
+    botad:
+      title: 'إدارة ارقام البوت'
+      desc: 'إدارة مستخدمي البوت ومنح التصريح لكل رقم جوال، بٌمكانك اضافة بيناتهم، تعديلهم أو حذفهم.'
+      mobile_no: 'رقم الجوال'
+      user_type: 'نوع التصريح'
+      userTypes:
+        Admin: 'اداري'
+        Teacher: 'معلم'
+        Student: 'طالب'
+        Parent: 'ولي أمر'
+        Visitor: 'زائر'
+    users:
       title: 'إدارة المستخدمين'
       desc: 'إدارة بيانات مستخدمي لوحة التحكم، بإمكانك اضافة بيناتهم، تعديلهم أو حذفهم.'
       id: 'رقم المعرف'
+      name: 'الاسم'
       mobile_no: 'رقم الجوال'
       email: 'البريد الإلكتروني'
       role: 'الصلاحيات'
-      settings_id: 'المدرسة'
+      school: 'المدرسة'
       user_types:
         Admin: 'مدير'
         Moderator: 'مشرف'
         Teacher: 'معلم'
-    log:
-      title: 'إدارة السجلات'
-      desc: 'إدارة السجلات  ، بإمكانك مشاهدة السجلات فقط.'
+    botlog:
+      title: 'إدارة سجلات البوت'
+      desc: 'إدارة سجلات البوت محادثات و اوامر المستخدمين، بإمكانك مشاهدة السجلات فقط.'
       mobile_no: 'رقم الجوال'
       timestamp: 'الوقت'
       primary_entry: 'المدخلات'
@@ -84,30 +115,34 @@ en:
       title: 'إدارة الطلاب'
       desc: 'إدارة بيانات الطلاب، بإمكانك اضافة بيناتهم، تعديلهم أو حذفهم.'
       id: 'رقم المعرف'
-      nid: 'الهوية الوطنية'
-      sid: 'الرقم الأكاديمي'
-      student_name: 'الاسم الكامل'
-      mobile_no: 'رقم الجوال'
-      gpa: 'المعدل التراكمي'
-      noor_account: 'حساب نور'
-      noor_pw: 'الرقم السري لحساب نور'
-      mdrsti_account: 'حساب منصة مدرستي'
-      mdrsti_pw: 'الرقم السري لحساب المنصة'
+      sid: 'الهوية الوطنية'
+      student_name: 'اسم الطالب'
+      tawaklna_s: 'الحالة الصحية'
+      status:
+        immune: 'محصن'
+        incomplete: 'لم يكمل الجرعات'
+        exampted: 'مصرح له'
+        exposed: 'مخالط'
+        infected: 'مصاب'
+        undifined: 'غير معروف'
+      school: 'المدرسة'
       import:
         noor_giudeline: 'يجب استيراد ملفات النور الخاصة الاتية بالترتيب:'
-        import_noor_msg: "%{created} طلاب تم استيرادهم, %{exist} مضافون من قبل"
+        import_msg: "%{created} طلاب تم استيرادهم, %{exist} مضافون من قبل"
         import_noor_error: "%{error} عدد من البينات لم تتم استيرادها بسبب وجود خلل ما "
         sid_sheet_title: 'كشف لطلاب المدرسة مرتب بالرقم الأكاديمي'
         nid_sheet_title: 'كشف بيانات طلاب المقررات'
         gpa_sheet_title: 'الأوائل حسب المعدل التراكمي'
         imported_noor_msg: 'تم استيراد البيانات'
         noor_none_imported: 'جميع البيانات تم استيرادها من قبل'
-    forms:
+    forms:      
       back: 'رجوع'
       cancel: 'إلغاء'
       edit: 'تعديل'
+      delete_i: 'حذف'
       delete_col: 'حذف'
       show: 'عرض'
+      submit: 'حفظ'
       edit_delete: 'تعديل/حذف'
       download_delete: 'تحميل/حذف'
       new_record: 'إضافة عنصر جديد'
@@ -118,8 +153,7 @@ en:
       updated_by: 'المحدث'
       import:
         title: 'بإمكناك إستيراد البينات من خلال ملفات اكسل بصيغة CVS'
-        title_noor: 'بإمكناك إستيراد البينات من خلال ملفات اكسل، اختر نوع الرفع إما عن طريق صيغة CVS أو ملفات مصدرة من نظام نور'
-        
+        title_noor: 'بإمكناك إستيراد البينات من خلال ملفات اكسل، اختر نوع الرفع إما عن طريق صيغة CVS أو ملفات مصدرة من نظام توكلنا'  
         choose_file: 'أختر الملف'
         import_button: 'إستيراد'
         success: 'تم استيراد البيانات بنجاح'
@@ -140,6 +174,8 @@ en:
         absence: 'ملف الغياب'
         noor: 'ملفات نور'
         smart_school: 'ملفات المدرسة الذكية'
+      login:
+        login: 'تسجيل الدخول'
     profile:
       title: 'بياناتي'
       form:
@@ -179,62 +215,43 @@ en:
           subject: 'ابحث عن اسم المقرر'
           teacher: 'ابحث عن اسم المعلم، البريد الالكتروني أو رقم الجوال'
           user: 'ابحث عن اسم المستخدم، البريد الالكتروني أو رقم الجوال'
-
     sidebar:
       dashboard: 'لوحة المعلومات'
       guide: 'دليل الاستخدام'
-      setting: 'بيانات العملاء'
-      botad: 'ارقام البوت'
-      botlog: 'سجلات البوت'
-      users: 'مستخدمي النظام'
-      faculty: 'المستفيدين'
+      setting: 'بيانات العملاء'    
+      logs: 'السجلات'
+      checkin: 'فحص الدخول'
+      users: 'مستخدمي النظام'  
       students: 'الطلاب'
-      students&parents: ':الطلاب و أولياء الأمور'
-      parents: 'أولياء الأمور'
-      relationships: 'العلاقات'
-      absence: 'الغياب'
-      teachers: 'المعلمين'
-      enrollment: 'التسجيل'
-      classes: 'الحصص الدراسية'
-      masterdata: ':البيانات الاساسية'
-      subjects: 'المقررات'
-      left_subjects: 'المقررات المتبقية'
-
-      divisions: 'الشعب'
-      classrooms: 'القاعات'
-      study_schedule: 'الجدول الدراسي'
-      tests: 'الدرجات'
-      testpapers: 'الاختبارات'
-      testmarks: 'الدرجات'
+      enrollment: 'المشتركين'
       complaints: 'الشكاوي'
       content: 'المرفقات'
       terms: 'الإتفاقية'
-
     dashboard:
       users: 'مستخدمي النظام'
-      botad_users: 'مستخدمي البوت'
-      satisfaction: 'مستوى الرضى'
-      daily_chats_count: 'عدد المحادثات اليومية'
+      botad_users: 'عدد السجلات'
+      attendes: 'مستوى الاحترازية'
+      daily_attendies_count: 'عدد الحضور اليوم'
       students_count: 'عدد الطلاب'
       classes_count: 'عدد الحصص'
       teachers_count: 'عدد المعلمين'
       subjects_count: 'عدد المواد'
       visitors_count: 'عدد الزوار'
       download_report: "تصدير التقرير"
-      complaint_overview: 'عدد الإستفسارات'
-      bot_activties: 'عدد المراسلات الشهري'
-      closed_tickets: 'المغلقة'
-      opened_tickets: 'المفتوحة'
+      complaint_overview: 'نسبة التحصين'
+      bot_activties: 'الدخول الشهري'
+      closed_tickets: 'لم يكمل الجرعات'
+      opened_tickets: 'محصن'
       common_paths: 'شعبية خيارات الطلاب'
-      studyPlanS: 'الخطة الدراسية'
-      schedulesS: 'الجداول'
-      absense: 'الغياب'
-      noor: 'حساب نور'
-      mdrsti: 'منصة مدرستي'
       otherStudent: 'استسفارات أو شكاوى'
       training_materials: 'دليل الاستخدام'
       training_desc_html: 'تحتاج معرفة تنفيذ أمراً ما؟ تفضل بزيارة منصة التدريب على استخدام النظام بالفيديو من خلال الضغط  <a target="_blank" rel="nofollow" href="%{link}">هنا</a>.'
       print_title: 'تقرير المعلومات'
+    guide:
+      title: 'دليل الإستخدام'
+      click_here: 'اضغط هنا للإنتقال للصفحة'
+      click_here_template: 'اضغط هنا لتحميل مثال اكسل'
+      desc: 'تستطيع الاستفادة من هذا القسم كمرجع للإستخدام الأمثل للنظام، انقر علي القسم المراد و تتبع الخطوات المذكورة.'
   activerecord:
     models:
       botad:
@@ -251,16 +268,17 @@ en:
       left_subject:
         one: 'المادة'
         ohter: 'المواد'
-      
+      logs:
+        one: 'السجل'
+        ohter: 'السجلات'
     attributes: 
-      absense:
-        absence_days: 'عدد أيام الغياب'
-      botad:
-        id: 'المعرف'
-        title: 'الجوال'
-        mobile_no: 'رقم الجوال'
-        userType: 'نوع التصريح'
-        settings_id: 'المدرسة'
+      logs:
+        tawaklna_s: 'الحالة الصحية'
+        student_id: 'رقم الهوية'
+        user_id: 'رقم المستخدم'
+        user: 'المستخدم'
+        student_name: 'الطالب'
+        time: 'وقت الدخول'
       user:
         name: 'الاسم الكامل'
         email: 'البريد الإلكتروني'
@@ -269,69 +287,13 @@ en:
         password_confirmation: 'تأكيد كلمة المرور'
         current_password: 'كملة المرور الحالية'
         roles: 'الصلاحيات'
-        settings_id: 'المدرسة'
+        school_id: 'المدرسة'
       student:
         nid: 'الهوية الوطنية'
         sid: 'الرقم الأكاديمي'
-        student_name: 'الاسم الكامل'
-        mobile_no: 'رقم الجوال'
-        gpa: 'المعدل التراكمي'
-        noor_account: 'حساب نور'
-        noor_pw: 'الرقم السري لحساب نور'
-        mdrsti_account: 'حساب منصة مدرستي'
-        mdrsti_pw: 'الرقم السري لحساب المنصة'
-        settings_id: 'المدرسة'
-      parent:
-        bot_ad_id: 'رقم الجوال'
-        parent_name: 'الاسم'
-        gender: 'الجنس'
-        settings_id: 'المدرسة'
-      relation:
-        parent_id: 'ولي الأمر'
-        student_id: 'الطالب'
-        relationship: 'الصلة'
-        settings_id: 'المدرسة'
-      teacher:
-        bot_ad_id: 'رقم الجوال'
         name: 'الاسم الكامل'
-        email: 'البريد الإلكتروني'
-        settings_id: 'المدرسة'
-      subject:
-        subject_name: 'اسم المقرر'
-        settings_id: 'المدرسة'
-      left_subject:
-        subject_id: 'اسم المقرر'
-        student_id: 'الطالب'
-        settings_id: 'المدرسة'
-      division:
-        division_name: 'اسم الشعبة'
-        settings_id: 'المدرسة'
-      classs:
-        class_name: 'اسم الحصة'
-        division_id: 'الشعبة'
-        subject_id: 'المقرر'
-        teacher_id: 'المعلم'
-        start_date: 'من الفترة'
-        end_date: 'الى الفترة'
-        settings_id: 'المدرسة'
-      classroom:
-        classroom_name: 'اسم المقرر'
-        floor: 'الطابق'
-        building: 'المبنى'
-        settings_id: 'المدرسة'
-      study_schedule:
-        class_id: 'الحصة'
-        classroom_id: 'القاعة'
-        weekday: 'اليوم'
-        time_from: 'وقت الحصة'
-        time_to: 'نهاية الحصة'
-        settings_id: 'المدرسة'
-      enrollment:
-        student_id: 'الطالب'
-        class_id: 'الصف'
-        absence_days: 'أيام الغياب'
-        grade: 'المجوع النهائي'
-        settings_id: 'المدرسة'
+        tawaklna_s: 'الحالة الصحية'
+        school_id: 'المدرسة'    
       setting:
         setting: 'العميل'
         school_name: 'اسم المدرسة'
@@ -348,8 +310,7 @@ en:
         license_type: 'الرخصة'
         contact_phone: 'رقم التواصل'
         contact_name: 'اسم الموظف'
-        expire_date: 'نهاية الخدمة'
-        
+        expire_date: 'نهاية الخدمة'   
       complaint:
         mobile_no: 'رقم الجوال'
         assignee: 'المشرف'
@@ -363,278 +324,33 @@ en:
       message:
         user_id: 'المتلقي'
         message_text: 'المحتوى'
-  telegram_webhooks:
-    please_wait: "أرجو منك الانتظار قليلا حتى نتمكن من تحميل بياناتك"
-    no_thanks: 'لا شكراً'
-    no_a: 'لا'
-    yes_c: 'نعم'
-    yes_a: 'نعم'
-    back_to_menu: "العودة إلى القائمة الرئيسية"
-    action_missing:
-      command: Can not perform %{command}
-    callback_query:
-      alert: This is ALERT-T-T!!!
-      no_alert: "شكرا لك لإنتظارك"
-      selected: "لقد اخترت : %{value}"
-    settings:
-      aboutWakeel: |
-        أنا البوت وكيل تم تطويري من قبل مؤسسة افينسا لتقنية المعلومات.
-        اقوم على البرمجة الذكية في التعامل مع المستخدمين و عرض البيانات المتعلقة بالطلاب و المعلمين كالاتي:
-        المواد المتبيقة للتخرج
-        مجموع الدرجات
-        الجداول الدراسية
-        جداول الاختبارات
-        الغياب
-        جدول المناوبات
-        طلب اجازة مرضية
-        ارسال استفسار او شكوى و غيرها
-
-        زرنا على https://www.afinsaa.com لتعرف أكثر
-        وللمحادثة الفورية https://telegram.me/kodanchi
-      
-    help:
-      content: |
-        الاوامر العامة:
-        /start - القائمة الرئيسية.
-        /about_me - معومات عني انا وكيل
-        /about_us - معلومات عن المدرسة 
-      admin: |
-          /start - القائمة الرئيسية
-          /open - الشكاوي و الاستفسارات المفتوحة
-          /ticket %n% - عرض حالة بكتابة رقمها بدل %n%
-    inline_keyboard:
-      alert: Answer with alert
-      no_alert: Without alert
-      prompt: 'Check my inline keyboard:'
-      repo: Open gem repo
-    inline_query:
-      content: Content
-      description: Description
-      selected: "لقد اخترت : %{value}"
-
-    keyboard:
-      buttons:
-        - Lorem
-        - Ipsum
-        - /cancel
-      prompt: 'Select something with keyboard:'
-      selected: "You've selected: %{value}"
-    last_chosen_inline_result:
-      prompt: Mention me to initiate inline query
-      selected: "You've chosen result #%{result_id}"
-    memo:
-      notice: Remembered!
-      prompt: What should I remember?
-    message:
-      content: 'كتبت لي: %{text}، قم بكتابة /start لكي اخدمك'
-      pn_received: "استلمنا  الرقم %{pn}"
-
-
-      welcome_visitor: "مرحبا بك زائرنا الكريم، سجلاتنا تفيد بأنك مدرج كزائر"
-
-    remind_me:
-      nothing: Nothing to remind
-    start:
-      content: "مرحباً %{fname}"
-      content_new: "مرحباً عزيزي المراجع"
-      welcome: "حياكم الله، أنا ‘وكيل’ المساعد التقني لمدرسة %{school_name}..  "
-      new_visitor: "تفيد سجلاتنا بأنك غير مسجل لدينا أو هذه المحادثة الاولي معي"
-      phoneN: "نرجو منكم تأكيد رقم الجوال من خلال الضغط علي الايقونة اسفل الشاشة"
-      pnButton: 'اضغط هنا لتأكيد الرقم'
-    admin:
-      clouser_ask: ' اتمنى ان اكون اجبت على استفسارك, هل تحتاج مساعده اخرى؟'
-      welcome_fullname: "اهلاً بك  %{fullname}"
-      welcome_admin: "انت مسجل لدينا كعضو اداري للرد علي استفسارات المستخدمين، عدد الاستسفارات المفتوحة: %{complaints}"
-      admin_not_created: "يبدو ان رقمك غير مضاف كعضو اداري بصفحة الاداريين، تواصل مع الادارة لاضافة رقمك كمشرف"
-      menu_prompt: 'هل لديك استفسار بخصوص..'
-      complaint_response: "قام ممثل الدعم الفني بالرد علي استفسارك رقم %{comp_id} بخصوص الاتي : %{complaint_desc}، رد ممثل الدعم الفني هو:"
-      ticket_details: "الحالة رقم %{comp_id}، الموضوع %{subject}، التفاصيل %{desc}، رقم الجوال %{mobile_no}"
-      resolution_ask: 'هل تريد الرد على على الاستفسار؟'
-      reply_complaint: 'حسناً، قم بالرد على الحالة الآن وسأقوم بارسال الرد واغلاق الحالة'
-      reply_to_this: 'قم بكتابة ردك الان'
-      no_access: 'لا استطيع ان اخدمك في الوقت الحالي'
-      no_ticket_no: 'فضلاً ادخل رقم الحالة فقط بعد الامر /ticket'
-      not_ticket_no: 'فضلاً ادخل رقم الحالة فقط بعد الامر /ticket'
-      ticket_closed: 'الحالة رقم %{comp_id}، بحالة مغلقة بتاريخ %{comp_date}'
-      complaint_closed: 'تم ارسال ارد و اغلاق الحالة رقم %{comp_id} '
-    teacher:
-      welcome_fullname: "اهلاً بك  %{fullname}"
-      welcome_teacher: " عدد المواد المسجلة لديك  %{classes_count}"
-      menu_prompt: 'هل لديك استفسار بخصوص..'
-      schedulesT: "الجداول"
-      schedulesT_C:
-        studyScheduleT: 'الجدول الدراسي'
-        studyScheduleT_C:
-          list_desc: "الجدول الحصص الخاص بك كالتالي.."
-          study_weekday: "يوم (%{weekday}):"
-          study_schedule_item: " الحصة(%{time_from})، المقرر (%{class_name}), القاعة (%{classroom_name})"
-          study_schedule_not_found: "لا توجد لديك حصص لهذا اليوم"
-        examScheduleT: "جدول الإختبارات"
-        callsScheduleT: 'جدول المناوبات'
-        callsScheduleT_C:
-          list_desc: "مرفق جدول المناوبات.."
-        item_not_found: "لم يتم بعد إدراج الجدول"
-      formsT: "التعاميم الرسمية"
-      formsT_C:
-        list_desc: "مرفق التعاميم ادناه"
-        item_not_found: "لم يتم بعد إدراج أي تعاميم"
-      leavesT: "رصيد الاجازات"
-      leavesT_C: 
-        current_complaint: "لديك استسفار برقم %{comp_id} ما زال تحت المراجعة ولم يغلق بعد الرجاء الانتظار حتى نتمكن من الرد عليك و بعد ذلك بإمكانك تقديم استفسار اخر"
-        subject: "رصيد الاجازات"
-        new_complaint: "لقد اخترت طلب رصيد الاجازات"
-        complaint_ask: "حسناً %{fullname}  نرجوا كتابة استفسارك الان وسيقوم فريق الدعم الفني بالرد عليك قريباً ، شكراً لتواصلك معنا"
-      lateHoursT: "ساعات التأخر"
-      lateHoursT_C:
-        current_complaint: "لديك استسفار برقم %{comp_id} ما زال تحت المراجعة ولم يغلق بعد الرجاء الانتظار حتى نتمكن من الرد عليك و بعد ذلك بإمكانك تقديم استفسار اخر"
-        subject: "ساعات التأخر"
-        new_complaint: "لقد اخترت طلب ساعات التأخر"
-        complaint_ask: "حسناً %{fullname}  نرجوا كتابة استفسارك الان وسيقوم فريق الدعم الفني بالرد عليك قريباً ، شكراً لتواصلك معنا"
-      absenceRequestT: "طلب غياب بعذر"
-      absenceRequestT_C:
-        current_complaint: "لديك استسفار برقم %{comp_id} ما زال تحت المراجعة ولم يغلق بعد الرجاء الانتظار حتى نتمكن من الرد عليك و بعد ذلك بإمكانك تقديم استفسار اخر"
-        subject: "طلب غياب بعذر"
-        new_complaint: "لقد اخترت طلب غياب بعذر"
-        complaint_ask: "حسناً %{fullname}  نرجوا كتابة سبب طلبك وسيقوم فريق الدعم الفني بالرد عليك قريباً ، شكراً لتواصلك معنا"
-    student:
-      clouser_ask: ' اتمنى ان اكون اجبت على استفسارك, هل تحتاج مساعده اخرى؟'
-      welcome_fullname: "اهلاً بك  %{fullname}"
-      welcome_student: "رقمك الاكاديمي هو %{sid}"
-      state_gpa: "معدلك التراكمي هو %{gpa}"
-      welcome_sid: "رقمك الاكاديمي هو %{sid}"
-      menu_prompt: 'هل لديك استفسار بخصوص..'
-      studyPlanS: 'الخطة الدراسية'
-      studyPlanS_C:
-        studyPlanSS: 'الخطة الدراسية'
-        marksReportS: 'كشف الدرجات'
-        marksReportS_C:
-          list_desc: "كشف الدرجات كالاتي .."
-          no_grade: "لم ترصد الدرجة"
-          grade_listed: "الدرجة : %{grade}"
-        studyPlanSS_C:
-          list_desc: "المواد الدراسية المتبقية كالاتي.."
-          no_plan: "لا توجد مواد دراسية متبقية للطالب"
-        marksReportS: 'كشف الدرجات'
-      schedulesS: 'الجداول'
-      schedulesS_C:
-        studyScheduleS: 'الجدول الدراسي'
-        studyScheduleS_C:
-          list_desc: "الجدول الدراسي الخاص بك كالتالي.."
-          study_weekday: "يوم (%{weekday}):"
-          study_schedule_item: " الحصة(%{time_from})، المقرر (%{class_name}),  القاعة (%{classroom_name})"
-          study_schedule_not_found: "لا توجد لديك حصص لهذا اليوم"
-        examScheduleS: 'جدول الإختبارات'
-        examScheduleS_C:
-          list_desc: "مرفق جدول الاختبارات .."
-          item_not_found: "لم يتم بعد إدراج جدول الاختبارات"
-      absense: 'الغياب'
-      absense_C:
-        list_desc: "هذه قائمة بعدد أيام الغياب في جميع المواد علماً بأن القائمة تُحدث اسبوعياً"
-        absence_listed: "المقرر (%{class_name}), أيام الغياب (%{absence_days})"
-        absence_not_found: "المقرر (%{class_name})،لا يوجد لديك أيام غياب مسجلة في النظام"
-      noor: 'حساب نور'
-      noor_C:
-        list_desc: "معلومات الدخول لحساب نور الخاصة بك هي"
-        noor_acc: "اسم المستخدم: (%{noor_account})"
-        noor_pw: "كلمة المرور (%{noor_pw})"
-        account_not_found: "لا يوجد لديك حساب نور مسجل لدينا، الرجاء التواصل مع الدعم الفني بالضغط على نعم بالاسفل، نرجوا كتابة استفسارك وسيقوم فريق الدعم الفني بالرد عليك قريباً  و اصدار حساب نور جديد لك"
-      mdrsti: 'منصة مدرستي'
-      mdrsti_C:
-        list_desc: "معلومات الدخول لحساب مدرستي الخاصة بك هي"
-        mdrsti_acc: "اسم المستخدم: (%{mdrsti_acc})"
-        mdrsti_pw: "كلمة المرور (%{mdrsti_pw})"
-        account_not_found: "لا يوجد لديك حساب منصة مدرستي مسجل لدينا، الرجاء التواصل مع الدعم الفني بالضغط على نعم بالاسفل، نرجوا كتابة استفسارك وسيقوم فريق الدعم الفني بالرد عليك قريباً  و اصدار حساب مدرستي جديد لك"
-      otherStudent: 'استسفارات أو شكاوى'
-      new_complaint: 'لقد اخترت ارفاق استفسار او شكوى جديدة'
-      current_complaint: "لديك استسفار برقم %{comp_id} ما زال تحت المراجعة ولم يغلق بعد الرجاء الانتظار حتى نتمكن من الرد عليك و بعد ذلك بإمكانك تقديم استفسار اخر"
-      complaint_ask: "حسناً %{fullname}  نرجوا كتابة استفسارك الان وسيقوم فريق الدعم الفني بالرد عليك قريباً ، شكراً لتواصلك معنا"
-      complaint_reported: "استفسار جديد، رقم الحالة (%{caseId}) ، رقم الجوال (%{pn})، الموضوع (%{subject})"
-      complaint_submitted: "تم تسجيل استسفارك بحالة رقم (%{caseId}) سيتواصل معك فريق الدعم قريباً"
-      happy_day_wish: "إلى اللقاء  %{fullname} , نتمنى لك يوما سعيداً"
-      happy_day_wish_no_callback: "إلى اللقاء  %{fullname} , نتمنى لك يوما سعيداً. ارسل /start لكي اخدمك مرة اخرى."
-    parent:
-      clouser_ask: ' اتمنى ان اكون اجبت على استفسارك, هل تحتاج مساعده اخرى؟'
-      welcome_fullname: "اهلاً بك  %{fullname}"
-      welcome_parent: " ابنك (%{student_name}) ورقمه الأكاديمي (%{sid})"
-      welcome_parent_gpa: " ابنك (%{student_name}) ورقمه الأكاديمي (%{sid})، ومعدله التراكمي (%{gpa})"
-      state_gpa: "معدله التراكمي هو %{gpa}"
-      menu_prompt: 'هل لديك استفسار بخصوص..'
-      studyPlanP: 'الخطة الدراسية'
-      schedulesP: 'الجداول'
-      absenseP: 'الغياب'
-      otherParent: 'استسفارات أو شكاوى'
-      studyPlanS_C:
-        studyPlanSS: 'الخطة الدراسية'
-        marksReportS: 'كشف الدرجات'
-        marksReportS_C:
-          list_desc: "كشف الدرجات للطالب (%{student_name}) كالاتي .."
-          no_grade: "لم ترصد الدرجة"
-          grade_listed: "الدرجة : %{grade}"
-        studyPlanSS_C:
-          list_desc: "المواد الدراسية المتبقية للطالب (%{student_name})  كالاتي.."
-          no_plan: "لا توجد مواد دراسية متبقية للطالب (%{student_name})"
-        marksReportS: 'كشف الدرجات'
-      schedulesS: 'الجداول'
-      schedulesS_C:
-        studyScheduleS: 'الجدول الدراسي'
-        studyScheduleS_C:
-          list_desc: "جدول  الطالب (%{student_name}) كالاتي .."
-          study_weekday: "يوم (%{weekday}):"
-          study_schedule_item: " الحصة(%{time_from})، المقرر (%{class_name}), القاعة (%{classroom_name})"
-          study_schedule_not_found: "لا توجد لديك حصص لهذا اليوم"
-      absense: 'الغياب'
-      absense_C:
-        list_desc: "هذه قائمة بعدد أيام الغياب في جميع المواد علماً بأن القائمة تُحدث اسبوعياً"
-        absence_listed: "المقرر (%{class_name}), أيام الغياب (%{absence_days})"
-        absence_not_found: "المقرر (%{class_name})،لا يوجد لديه أيام غياب مسجلة في النظام"
-        list_desc_s: "قائمة الغياب للطالب (%{student_name}) كالاتي .."
-
-    visitor:
-      happy_day_wish: "إلى اللقاء , نتمنى لك يوما سعيداً. ارسل /start لكي اخدمك مرة اخرى."
-      welcome_fullname: "اهلاً بك  عزيزي المراجع"
-      visitorName: 'عزيزي المراجع'
-      welcome_visitor: "ان كنت طالب او من ادارة المدرسة فتواصل معنا بالضغط على تواصل معنا"
-      menu_prompt: 'هل لديك استفسار بخصوص..'
-      aboutSchoolV: "نبذة عن المدرسة"
-      aboutWakeelV: "نبذة عن وكيل"
-      visitorComplaint: "استفسارات اخرى"
-      visitorComplaint_C:
-        subject: "استفسار زائر"
-        new_complaint: "لقد اخترت استفسارات أخرى"
-        current_complaint: "لديك استسفار برقم %{comp_id} ما زال تحت المراجعة ولم يغلق بعد الرجاء الانتظار حتى نتمكن من الرد عليك و بعد ذلك بإمكانك تقديم استفسار اخر"
-        complaint_ask: "نرجوا كتابة استفسارك الان بالاضافة إلى اسمك الكامل وسيقوم فريق الدعم الفني بالرد عليك قريباً ، شكراً لتواصلك معنا"
-    weekdays:
-      Sunday: 'الأحد'
-      Monday: 'الاثنين'
-      Tuesday: 'الثلاثاء'
-      Wednesday: 'الأربعاء'
-      Thursday: 'الخميس'
-      Friday: 'الجمعة'
-      Saturday: 'السبت'
-    classes:
-      c1: "الأولى"
-      c2: "الثانية"
-      c3: "الثالثة"
-      c4: "الرابعة"
-      c5: "الخامسة"
-      c6: "السادسة"
-      c7: "السابعة"
+    errors:
+      models:
+        user:
+          attributes:
+            school:
+              required: لا يمكنك التسجيل الان الا بعد اضافة معلومات المدرسة
   pagy:
     item_name:
       one: "عنصر"
       other: "عناصر"
-
     nav:
       prev: "&lsaquo;&nbsp;السابق"
       next: "التالي&nbsp;&rsaquo;"
       gap: "&hellip;"
-
     info:
       no_items: "ليس هناك %{item_name} "
       single_page_html: "عرض <b>%{count}</b> %{item_name}"
       multiple_pages_html: "عرض <b>%{from} - %{to}</b> %{item_name} من مجموع <b>%{count}</b> "
-
     combo_nav_js: "Page %{page_input} of %{pages}"
-
     items_selector_js: "Show %{items_input} %{item_name} per page"
-
+  unauthorized:
+    manage:
+      all: "لست مصرح بعملية %{action} %{subject}."
+      user: "لست مصرح بتعديل المستخدمين"
+    update:
+      user: "لست مصرح بتعديل بيانات المستخدم"
+    action_name:
+      model_name: "..." 
+  errors:
+    page_not_found: 'الصفحة المطلوبة غير موجودة، تم تحويلك هنا!'

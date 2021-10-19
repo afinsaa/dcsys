@@ -1,10 +1,26 @@
 
 
 prawn_document do |pdf|
-  pdf.font Rails.root.join('app/assets/fonts/GE_SS_Unique_Light.otf')
+  pdf.font Rails.root.join('app/assets/fonts/ArialUnicodeMS.ttf')
+  # pdf.font Rails.root.join('app/assets/fonts/GE_SS_Unique_Light.otf')
+
+  logoData = [
+    
+    [
+       {:image => Rails.root.join('app/assets/images', "7_logo_c.png"), :scale => 0.025, :position => :center}
+    ],
+    [
+      ("- منصة حصين - #{current_user.school.name}").fix_arabic_glyphs
+    ]
+  ]
+  # t2 = pdf.make_table(logoData, :cell_style => {:padding => [20, 20, 20, 20], :borders => [ ] } , :position => :center)
+
+  pdf.table(logoData, :cell_style => {:padding => [20, 20, 20, 20],  :borders => [ ] })
+  
+
   # pdf.font.size = 13
-  pdf.text ("منصة حصين - #{current_user.school.name}").fix_arabic_glyphs, :position => :center
-  pdf.font "Helvetica"
+  # pdf.text ("منصة حصين - #{current_user.school.name}").fix_arabic_glyphs, :position => :center
+  # pdf.font "Helvetica"
   pdf.move_down 20
   # pdf.table [['d']]
   # pdf.table @logs.collect{|p| [p.student.sid,p.student.name, p.tawaklna_s]}
@@ -34,10 +50,15 @@ prawn_document do |pdf|
       fUrl = f.path
     end
 
-    nameCell = pdf.make_cell(content: s.name.fix_arabic_glyphs, borders: [], size: 10, :text_color => "000000", padding: [0,0,0,0], font: Rails.root.join('app/assets/fonts/GE_SS_Unique_Light.otf'))
+    nameCell = pdf.make_cell(content: s.name.fix_arabic_glyphs, borders: [], size: 10, :text_color => "000000", padding: [0,0,0,0], font: Rails.root.join('app/assets/fonts/ArialUnicodeMS.ttf'))
+    
+    
+    sidCell = pdf.make_cell(content: s.sid, borders: [], size: 10, :text_color => "000000", padding: [0,0,0,0], font: 'Helvetica')
+    
+
     sCard = [
       [
-        s.sid
+        sidCell
        
       ],
       [

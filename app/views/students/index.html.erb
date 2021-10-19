@@ -24,7 +24,9 @@
           <th><%= t('portal.student.sid') %></th>
           <th><%= t('portal.student.student_name') %></th>
           <th><%= t('portal.student.tawaklna_s') %></th>
+          <% if current_user.has_role? :Admin %>
           <th><%= t('portal.student.school') %></th>
+          <% end %>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -35,8 +37,9 @@
             <td><%= student.sid %></td>
             <td><%= student.name %></td>
             <td><%=  t(student.tawaklna_s, scope: 'portal.student.status') %></td>
-            
+            <% if current_user.has_role? :Admin %>
             <td><%= student.school.name %></td>
+            <% end %>
             <td><%= link_to t('portal.forms.show'), student %></td>
             <td><%= link_to t('portal.forms.edit'), edit_student_path(student) %></td>
             <td><%= link_to t('portal.forms.delete_i'), student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

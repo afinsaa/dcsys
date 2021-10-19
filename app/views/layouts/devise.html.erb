@@ -43,7 +43,9 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <% if controller.action_name != 'terms' %>
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image text-center p-5 ">
+                                <%= image_tag('logo.png', size: "300x300", class: '') %>
+                            </div>
                             <div class="col-lg-6">
                                 <% else %>
                                 <div class="col-lg-12">
@@ -51,6 +53,7 @@
                                     
 
                                     <div class="p-5">
+                                    
                                          <div class="container-fluid" dir="<%= t('dir')%>">
 
                                             <% if notice %>

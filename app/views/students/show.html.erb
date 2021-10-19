@@ -48,7 +48,7 @@
 
     <div class="form-group col-md-12 text-center">
         <%= t('portal.student.qrcode')  %><br />
-        <img src="<%= url_for (@student.qrimage) %>" />
+        <img src="<%= @student.qrimage.url %>" />
     </div>
 
   

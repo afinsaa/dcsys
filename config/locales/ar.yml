@@ -4,6 +4,7 @@ ar:
   copyright: "جميع الحقوق محفوظة © 2020 لفترات لتقنية المعومات"
   users: 'المستخدمين'    
   portal:
+    page_title: 'حصين'
     no_school:
       alert: 'لست مشتركاً معنا في منصة حصين للفحص و الدخول الاحترازي، نرجو التواصل معنا على رقم الواتسب 0581251777'
     qrcode:
@@ -141,6 +142,7 @@ ar:
       delete_i: 'حذف'
       delete_col: 'حذف'
       show: 'عرض'
+      submit: 'حفظ'
       edit_delete: 'تعديل/حذف'
       download_delete: 'تحميل/حذف'
       new_record: 'إضافة عنصر جديد'
