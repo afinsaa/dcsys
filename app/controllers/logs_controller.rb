@@ -3,7 +3,7 @@ class LogsController < ApplicationController
   before_action :set_qr_data, only: :create
   # GET /logs or /logs.json
   load_and_authorize_resource
-  
+
   def index
 
     @pagy, @logs = pagy(Log.accessible_by(current_ability))
@@ -28,9 +28,11 @@ class LogsController < ApplicationController
         end
       end
     else
-      search_val = params[:search_val]
-      if search_val.valid_date?
-        @logs = Log.search(search_val).accessible_by(current_ability)
+      @search_val = params[:search_val]
+      p @search_val
+      if valid_date?(@search_val)
+        p "it reeeeeeeeeeeeds"
+        @logs = Log.search(@search_val).accessible_by(current_ability)
         if @logs.count == 0
           flash[:alert] = t('portal.logs.no_result')
           redirect_to logs_url
@@ -177,7 +179,7 @@ class LogsController < ApplicationController
     end
 
     
-    def valid_date?( str, format="%m-%d-%Y" )
+    def valid_date?( str, format="%Y-%m-%d" )
       Date.strptime(str,format) rescue false
     end
 
