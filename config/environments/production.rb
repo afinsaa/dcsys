@@ -68,20 +68,30 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  mailertogo_host     = ENV.fetch("MAILERTOGO_SMTP_HOST")
-  mailertogo_port     = ENV.fetch("MAILERTOGO_SMTP_PORT", 587)
-  mailertogo_user     = ENV.fetch("MAILERTOGO_SMTP_USER")
-  mailertogo_password = ENV.fetch("MAILERTOGO_SMTP_PASSWORD")
-  mailertogo_domain   = ENV.fetch("MAILERTOGO_DOMAIN", "mydomain.com")
+#   mailertogo_host     = ENV.fetch("MAILERTOGO_SMTP_HOST")
+#   mailertogo_port     = ENV.fetch("MAILERTOGO_SMTP_PORT", 587)
+#   mailertogo_user     = ENV.fetch("MAILERTOGO_SMTP_USER")
+#   mailertogo_password = ENV.fetch("MAILERTOGO_SMTP_PASSWORD")
+#   mailertogo_domain   = ENV.fetch("MAILERTOGO_DOMAIN", "mydomain.com")
 
-config.action_mailer.smtp_settings = {
-  :address              => mailertogo_host,
-  :port                 => mailertogo_port,
-  :user_name            => mailertogo_user,
-  :password             => mailertogo_password,
-  :domain               => mailertogo_domain,
-  :authentication       => :plain,
-  :enable_starttls_auto => true,
+# config.action_mailer.smtp_settings = {
+#   :address              => mailertogo_host,
+#   :port                 => mailertogo_port,
+#   :user_name            => mailertogo_user,
+#   :password             => mailertogo_password,
+#   :domain               => mailertogo_domain,
+#   :authentication       => :plain,
+#   :enable_starttls_auto => true,
+# }
+
+# SMTP settings for mailgun
+ActionMailer::Base.smtp_settings = {
+  :port           => ENV['MAILGUN_SMTP_PORT'],
+  :address        => ENV['MAILGUN_SMTP_SERVER'],
+  :domain         => ENV['MAILGUN_DOMAIN'],
+  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  :authentication => :plain,
 }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
