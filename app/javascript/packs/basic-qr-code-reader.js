@@ -44,4 +44,9 @@ codeReader
   })
   .catch(error => {
     console.error(error);
+    console.log(error);
+    if(error === PERMISSION_DENIED) {
+      // Explain why you need permission and how to update the permission setting
+      console.log("It's permission errorrrrrr!")
+    }
   });
