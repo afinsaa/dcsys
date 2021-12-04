@@ -10,40 +10,53 @@
           <a href="/students/<%= @student.id%>.pdf" class="btn btn-info" target="_blank">
             <i class="fa fa-id-badge"></i>
           </a>
+
+          <a href="<%= student_report_path(@student) %>" class="btn btn-info" >
+            <i class="fa fa-clipboard"></i>
+          </a>
     </div>
   </div>
 </div>
 <br/>
 <div class="row">
 
-    <div class="form-group col-md-6">
-        <%= t('portal.student.sid')  %><br />
-        <%= @student.sid %>
-    </div>
+    <div class="col-md-9">
+        <div class="row">
 
-    <div class="form-group col-md-6">
-        <%= t('portal.student.student_name')  %><br />
-        <%= @student.name %>
+            <div class="form-group col-md-6">
+                <%= t('portal.student.sid')  %><br />
+                <%= @student.sid %>
+            </div>
+
+            <div class="form-group col-md-6">
+                <%= t('portal.student.student_name')  %><br />
+                <%= @student.name %>
+            </div>
+
+        </div>
+
+    <div class="row">
+
+            <div class="form-group col-md-6">
+                <%= t('portal.student.status_i')  %><br />
+                <%=  t(@student.status, scope: 'portal.student.status') %>
+            </div>
+
+        <% if current_user.has_role? :Admin %>
+            <div class="form-group col-md-6">
+                <%= t('portal.student.school_id')  %><br />
+                <%= @student.school_id %>
+            </div>
+        <% end %>
     </div>
 
 </div>
-
-<div class="row">
-
-    <div class="form-group col-md-6">
-        <%= t('portal.student.tawaklna_s')  %><br />
-        <%=  t(@student.tawaklna_s, scope: 'portal.student.status') %>
-    </div>
-
-  <% if current_user.has_role? :Admin %>
-      <div class="form-group col-md-6">
-          <%= t('portal.student.school_id')  %><br />
-          <%= @student.school_id %>
-      </div>
-  <% end %>
+        <div class="col-md-3 text-center">
+           
+            <img src="<%= @student.photo.url %>" />
+        </div>
 </div>
-
-
+<hr>
 <div class="row">
 
     <div class="form-group col-md-12 text-center">
@@ -53,6 +66,7 @@
 
   
 </div>
+
 
 
 

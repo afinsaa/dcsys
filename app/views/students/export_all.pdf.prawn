@@ -24,7 +24,7 @@ prawn_document do |pdf|
   pdf.font "Helvetica"
   pdf.move_down 20
   # pdf.table [['d']]
-  # pdf.table @logs.collect{|p| [p.student.sid,p.student.name, p.tawaklna_s]}
+  # pdf.table @logs.collect{|p| [p.student.sid,p.student.name, p.status]}
   studArray = []
   rowCounter = 0
   @students.each do |s|
@@ -82,7 +82,7 @@ prawn_document do |pdf|
       studArray.append(arr)
     end
   end
-  # pdf.table(@students.collect{|p| [p.student.sid,p.student.name, p.tawaklna_s, p.created_at.to_s]}, header: true)
+  # pdf.table(@students.collect{|p| [p.student.sid,p.student.name, p.status, p.created_at.to_s]}, header: true)
   # pdf.table(studArray, :cell_style => { :borders => [:top, :left]})
 
   pdf.table(studArray) do |t|

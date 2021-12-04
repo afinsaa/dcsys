@@ -23,7 +23,7 @@ prawn_document do |pdf|
   # pdf.font "Helvetica"
   pdf.move_down 20
   # pdf.table [['d']]
-  # pdf.table @logs.collect{|p| [p.student.sid,p.student.name, p.tawaklna_s]}
+  # pdf.table @logs.collect{|p| [p.student.sid,p.student.name, p.status]}
   studArray = []
   rowCounter = 0
   s = @student

@@ -1,0 +1,60 @@
+
+<h1><%= t('portal.student.title') %></h1>
+<div class="card-header py-3">
+  <div class="row">
+      <div class="col-md-8">
+      <% if current_user.has_role? :Parent %>
+        <a href="<%= dashboard_index_path %>" class="btn btn-info">    
+              <i class="fa fa-list"></i>
+          </a>
+  <% else %>
+      <a href="<%= students_path %>" class="btn btn-info">
+              <i class="fa fa-list"></i>
+          </a>
+          <a href="<%= new_student_report_path %>" class="btn btn-info">
+              <i class="fa fa-plus"></i>
+          </a>
+          
+      <% end %>
+    </div>
+    
+    
+  </div>
+  <hr>
+  <% if current_user.has_role? :Parent %>
+
+  <% else %>
+<%= render 'form', student_report: @student_report %>
+<% end %>
+</div>
+ <div class="card-body">
+ <h3><%= t('portal.student.note.title')%> <%= @student.name %></h3>
+  <div class="">
+    
+        <% @st_reports.each do |note| %>
+        <div class="row py-3">
+            <div class="col-md-12"> 
+                <div class="card list-group-item-<%= note.ntype == 'note' ? 'success' : note.ntype == 'alert' ? 'danger' : 'warning' %>">
+                <div class="card-content">
+                    <div class="card-body">
+                    <div class="media d-flex">
+                        
+                        <div class="media-body text-right">
+                        <h3><%= note.note %></h3>
+                        <span><%=  t(note.ntype, scope: 'portal.student.note.types') %></span>
+                        </div>
+                        <small><%= note.created_at.to_s %></small>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+      </div>
+         
+        <% end %>
+      
+    </div>
+</div>
+  <%= render partial: 'layouts/nav', locals: {pagy: @pagy} %>
+<br>
+

@@ -1,0 +1,49 @@
+
+<h3><%= %></h3>
+<%= form_with(model: student_report) do |form| %>
+                <% if student_report.errors.any? %>
+                    <div id="error_explanation">
+                    <h2><%= pluralize(v.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+                    <ul>
+                        <% student_report.errors.each do |error| %>
+                        <li><%= error.full_message %></li>
+                        <% end %>
+                    </ul>
+                    </div>
+                <% end %>
+
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <%= form.label :Note  %><br />
+                        <%= form.text_area  :note, class: 'form-control form-control-user', required: true %>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <%= form.label :Type  %><br />
+                            <%= form.select :ntype, StudentReport::Status.collect {|p| [ t(p, scope: 'portal.student.note.types'), p ] },{:include_blank => false},{:class => 'form-control '}  %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <%= form.label :Attachment  %><br />
+                            <%= form.file_field :attachment,{:class => 'form-control '}  %>
+                        </div>
+                    </div>
+                        
+                        
+                    </div>
+            </div>
+            <div class="row">
+                    
+                    <%= form.hidden_field  :student_id, value: @student.id %>
+            </div>
+
+            <div class="actions row">
+    <div class="form-group  col-md-6">
+        <%= form.submit t('portal.forms.submit'), class: 'btn btn-primary btn-block' %>
+    </div>
+    
+</div>
+    <% end %>

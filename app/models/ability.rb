@@ -21,7 +21,10 @@ class Ability
       can :manage, Student, school_id: user.school_id
       can :manage, Log, user_id: user.id
       
-      
+    elsif user.has_role? :Parent
+      can :manage, Parent, user_id: user.id
+      can :read, StudentReport 
+      can :manage, Log, user_id: user.id 
 
 
 

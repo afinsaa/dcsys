@@ -1,8 +1,15 @@
 class Student < ApplicationRecord
   belongs_to :school
+  
+  # has_one :user, through: :parent, source: :student_id
+  
+  
+  has_one_attached :photo
   has_one_attached :qrimage
 
-  Status = [:immune, :exampted,  :incomplete, :exposed, :infected]
+  has_one :user, through: :parent, source: :user_id
+
+  Status = [:vaild, :canceled, :latepay ]
 
 
   validates :sid, uniqueness: { scope: [:school_id] }, :presence => true, numericality: { only_integer: true }

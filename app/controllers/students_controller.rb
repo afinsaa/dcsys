@@ -9,29 +9,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1 or /students/1.json
   def show
-    # require 'rqrcode'
-    # stdnt = Student.find(params[:id])
-    # qrcode = RQRCode::QRCode.new(stdnt.sid)
-
-    # # NOTE: showing with default options specified explicitly
-    # png = qrcode.as_png(
-    #   bit_depth: 1,
-    #   border_modules: 4,
-    #   color_mode: ChunkyPNG::COLOR_GRAYSCALE,
-    #   color: "black",
-    #   file: nil,
-    #   fill: "white",
-    #   module_px_size: 6,
-    #   resize_exactly_to: false,
-    #   resize_gte_to: false,
-    #   size: 120
-    # )
-    # File.open(Rails.root.join('app/assets/images', 'tmp', "tmpqr_#{current_user.id}.png"), 'wb') do |f|
-    #   f.write(png.to_s)
-    # end
-    # IO.binwrite(Rails.root.join('app/assets/images', 'tmp', 'tmpqr.png'), png.to_s)
-    # IO.binwrite("/tmp/#{stdnt.id}-qrcode.png", png.to_s)
-
+  
     @student = Student.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
@@ -158,7 +136,7 @@ class StudentsController < ApplicationController
           student = Student.new
           student.sid = row[0]
           student.name = row[1]
-          student.tawaklna_s = row[2]
+          student.status = row[2]
           student.school_id = current_user.school_id
 
           genQRcode = rand.to_s[2..11]
@@ -194,7 +172,7 @@ class StudentsController < ApplicationController
           if Student.exists?(sid: row[0], school_id: current_user.school_id)
           # students << student
             s = Student.where(sid: row[0], school_id: current_user.school_id).first
-            s.update(name: row[1], tawaklna_s: row[2])
+            s.update(name: row[1], status: row[2])
             error_student_counter += 1
           else
             student.save!
@@ -205,7 +183,7 @@ class StudentsController < ApplicationController
       end
 
       # if students.count > 0
-      #   results = Student.import students, validate: true, track_validation_failures: true, on_duplicate_key_update: [:sid, :tawaklna_s]
+      #   results = Student.import students, validate: true, track_validation_failures: true, on_duplicate_key_update: [:sid, :status]
 
       #   results.failed_instances.each do |e|
           
@@ -275,10 +253,10 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_student_params
-      params.require(:student).permit(:sid, :name, :tawaklna_s, :school_id)
+      params.require(:student).permit(:sid, :name, :status, :school_id)
     end
 
     def student_params
-      params.require(:student).permit(:sid, :name, :tawaklna_s)
+      params.require(:student).permit(:sid, :name, :status)
     end
 end

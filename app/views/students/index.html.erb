@@ -23,7 +23,7 @@
         <tr>
           <th><%= t('portal.student.sid') %></th>
           <th><%= t('portal.student.student_name') %></th>
-          <th><%= t('portal.student.tawaklna_s') %></th>
+          <th><%= t('portal.student.status_i') %></th>
           <% if current_user.has_role? :Admin %>
           <th><%= t('portal.student.school') %></th>
           <% end %>
@@ -36,7 +36,7 @@
           <tr>
             <td><%= student.sid %></td>
             <td><%= student.name %></td>
-            <td><%=  t(student.tawaklna_s, scope: 'portal.student.status') %></td>
+            <td><%=  t(student.status, scope: 'portal.student.status') %></td>
             <% if current_user.has_role? :Admin %>
             <td><%= student.school.name %></td>
             <% end %>

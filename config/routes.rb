@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
     
     resources :logs, only: [:index, :create, :show]
+    resources :student_reports, only: [:index, :new, :create, :show]
+
     get 'log/download', to: 'logs#download'
     get 'log/export', to: 'logs#export'
     
@@ -27,6 +29,16 @@ Rails.application.routes.draw do
         get :upload
         get 'export_all'
         post :import
+        post :lookup
+        
+        delete 'delete_all'
+      end
+    end
+
+
+
+    resources :parents do
+      collection do
         post :lookup
         delete 'delete_all'
       end

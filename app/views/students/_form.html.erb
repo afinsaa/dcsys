@@ -21,11 +21,19 @@
         <%= form.label :name  %><br />
         <%= form.text_field  :name, class: 'form-control form-control-user' %>
     </div>
-
+</div>
+<div class="row">
     <div class="form-group col-md-4">
-    <%= form.label :tawaklna_s %><br />
-    <%= form.select :tawaklna_s, Student::Status.collect {|p| [ t(p, scope: 'portal.student.status'), p ] },{:include_blank => true},{:class => 'form-control '}  %>
+    <%= form.label :status %><br />
+    <%= form.select :status, Student::Status.collect {|p| [ t(p, scope: 'portal.student.status'), p ] },{:include_blank => true},{:class => 'form-control '}  %>
     </div>
+
+    
+    <div class="form-group col-md-12">
+        <%= form.label :Photo  %><br />
+        <%= form.file_field :photo,{:class => 'form-control '}  %>
+    </div>
+                    
 
   </div>
 

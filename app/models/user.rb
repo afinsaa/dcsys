@@ -1,15 +1,16 @@
 class User < ApplicationRecord
-  
+  has_many :parents, class_name: "parent", foreign_key: "user_id"
   belongs_to :school, optional: true
-  
+  # has_one :student, through: :parent, source: :user_id
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
 
-         UserTypes = [:Admin, :Moderator ,:Teacher]
-         ROLES = %i[Admin Moderator Teacher]
+         UserTypes = [:Admin, :Moderator ,:Teacher, :Parent]
+         ROLES = %i[Admin Moderator Teacher Parent]
 
          def roles=(roles)
           roles = [*roles].map { |r| r.to_sym }

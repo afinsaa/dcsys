@@ -15,8 +15,33 @@ print {
 </style>
 
 <% end %>
+<% if current_user.has_role? :Parent %>
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800 d-print-none"><%=t("portal.dashboard.mykids.title")%></h1>
+      </div>
 
-
+   <% @mykids.each do |kid| %>
+  <div class="row">
+    <!-- users Card  -->
+            <a href="<%= student_report_path(kid.student) %>" class="col-xl-8 col-md-12 mb-4 btn">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><%=kid.student.sid%></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><%=kid.student.name%></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-user fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+  </div>
+<% end %>
+  <hr>
+<% end %>
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800 d-print-none"><%=t("portal.sidebar.dashboard")%></h1>
@@ -28,6 +53,8 @@ print {
             <h1 class="h3 mb-0 text-gray-800 d-none d-print-inline"><%= Time.now.strftime("%m/%d/%Y") %></h1>
 
           </div>
+
+
 
           <!-- Content Row -->
           <div class="row">

@@ -16,8 +16,8 @@ class DashboardController < ApplicationController
         # @complaints = Complaint.accessible_by(current_ability).count
         log_count = Log.accessible_by(current_ability).count
 
-        @closed_complaints = Student.accessible_by(current_ability).where(tawaklna_s: :incomplete).count
-        @open_complaints = Student.accessible_by(current_ability).where(tawaklna_s: :immune).count    
+        @closed_complaints = Student.accessible_by(current_ability).where(status: :incomplete).count
+        @open_complaints = Student.accessible_by(current_ability).where(status: :immune).count    
   
 
 
@@ -56,7 +56,12 @@ class DashboardController < ApplicationController
         @attending = @attending.nan? ? 0.0 : @attending
       # end
 
-    
+      @mykids = nil
+      if current_user.has_role? :Parent
+        p "I'mmm parent"
+        @mykids = Parent.where(user_id: current_user.id)
+      end
+      
 
     end
 

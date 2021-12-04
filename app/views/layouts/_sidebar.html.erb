@@ -53,6 +53,10 @@
     <%= nav_item t('portal.sidebar.students'), students_path, 'fa-users' %>
     <% end %>
     
+    <% if can? :manage, Parent %>
+    <%= nav_item t('portal.sidebar.parents'), parents_path, 'fa-users' %>
+    <% end %>
+
     <!-- Nav Item - Tables -->
     <!-- <li class="nav-item">
     <a class="nav-link" href="tables.html">
