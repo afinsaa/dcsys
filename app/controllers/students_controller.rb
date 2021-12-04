@@ -72,7 +72,10 @@ class StudentsController < ApplicationController
           content_type: 'image/jpeg',
           filename: 'image.jpg'
         })
-        
+
+        if student_params[:photo].attached?
+          @student.photo.attach(params[:photo])
+        end
         format.html { redirect_to @student, notice: "Student was successfully created." }
         format.json { render :show, status: :created, location: @student }
       else
@@ -86,6 +89,9 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
+        if student_params[:photo].attached?
+          @student.photo.attach(params[:photo])
+        end
         format.html { redirect_to @student, notice: "Student was successfully updated." }
         format.json { render :show, status: :ok, location: @student }
       else
