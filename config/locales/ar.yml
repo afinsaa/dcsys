@@ -234,6 +234,7 @@ ar:
       checkin: 'فحص الدخول'
       users: 'مستخدمي النظام'  
       students: 'الطلاب'
+      parents: 'أولياء الامور'
       enrollment: 'المشتركين'
       complaints: 'الشكاوي'
       content: 'المرفقات'

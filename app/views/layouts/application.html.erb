@@ -57,7 +57,10 @@
                 <div class="container-fluid" dir="<%= t('dir')%>">
 
                     <% if can? :manage, Student %>
-                            
+
+                        
+                     
+                    <% elsif current_user.has_role? :Parent %>    
                     <% else %>
                         <p class="alert alert-danger">
                             <%= t('portal.no_school.alert')%>

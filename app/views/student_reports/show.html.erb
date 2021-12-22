@@ -28,7 +28,16 @@
 <% end %>
 </div>
  <div class="card-body">
- <h3><%= t('portal.student.note.title')%> <%= @student.name %></h3>
+ <div class="row">
+    <div class="col-md-9">     
+        <h3><%= t('portal.student.note.title')%> <%= @student.name %></h3>
+    </div>
+    <div class="col-md-3 text-center">     
+            <img src="<%= @student.photo.url %>" width="120" />
+        </div>
+
+ </div>
+
   <div class="">
     
         <% @st_reports.each do |note| %>
@@ -40,10 +49,14 @@
                     <div class="media d-flex">
                         
                         <div class="media-body text-right">
-                        <h3><%= note.note %></h3>
-                        <span><%=  t(note.ntype, scope: 'portal.student.note.types') %></span>
+                        <h4><%= note.note %></h4>
+                        <br/>
+                        <div> <a href="<%= note.attachment.url %>" target="_blank"> <img src="<%= note.attachment.url %>" width="120" /> </a></div>
+                        <hr>
+                        <span><%=  t(note.ntype, scope: 'portal.student.note.types') %> | <%= note.user.name %> </span>
+                        | <small><%= note.created_at.to_s %></small>
                         </div>
-                        <small><%= note.created_at.to_s %></small>
+                        
                     </div>
                     </div>
                 </div>

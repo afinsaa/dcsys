@@ -41,7 +41,7 @@ amazon:
 
 tamazon:
   service: S3
-  access_key_id: AKIARVGPJVYVJQK5SMUK
-  secret_access_key: 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
+  access_key_id: AKIAVVKH7VVUIWO6QF2T
+  secret_access_key: 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
   region: eu-west-1
-  bucket: bucketeer-c5bf2a24-45d2-4166-a0d8-1bd12b313b5a
+  bucket: bucketeer-182bde82-22fc-43e8-aafb-15746dcaa5f9

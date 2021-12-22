@@ -24,7 +24,7 @@ class Ability
     elsif user.has_role? :Parent
       can :manage, Parent, user_id: user.id
       can :read, StudentReport 
-      can :manage, Log, user_id: user.id 
+      # can :manage, Log, user_id: user.id 
 
 
 

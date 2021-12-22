@@ -2,10 +2,10 @@ class StudentReportsController < ApplicationController
 
 
     def show
-        
-        @pagy, @st_reports = pagy(StudentReport.accessible_by(current_ability).order( 'student_reports.id DESC' ))
-        @student_report = StudentReport.new
         @student = Student.find(params[:id])
+        @pagy, @st_reports = pagy(StudentReport.where(student: @student).accessible_by(current_ability).order( 'student_reports.id DESC' ))
+        @student_report = StudentReport.new
+        
         respond_to do |format|
         format.html 
         format.pdf { render :layout => false }
@@ -44,7 +44,7 @@ private
 
     # Only allow a list of trusted parameters through.
     def student_report_params
-      params.require(:student_report).permit(:note, :ntype, :student_id, :user_id)
+      params.require(:student_report).permit(:note, :ntype, :attachment, :student_id, :user_id)
     end
 
 end

@@ -40,9 +40,21 @@
             <% if current_user.has_role? :Admin %>
             <td><%= student.school.name %></td>
             <% end %>
-            <td><%= link_to t('portal.forms.show'), student %></td>
-            <td><%= link_to t('portal.forms.edit'), edit_student_path(student) %></td>
-            <td><%= link_to t('portal.forms.delete_i'), student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+            <a href="<%= student_path(student) %>" class="btn btn-info">
+              <i class="fa fa-eye"></i>
+          </a>
+            </td>
+            
+            <td>
+            <a href="<%= edit_student_path(student) %>" class="btn btn-info">
+              <i class="fa fa-pen"></i>
+          </a>
+            </td>
+            <td>
+                <%= link_to content_tag(:span,'', class: 'fa fa-trash-alt'), student, method: :delete ,data: {:confirm => t('portal.forms.delete.confirm')}, :class => 'btn btn-danger' %>
+
+            </td>
           </tr>
         <% end %>
       </tbody>

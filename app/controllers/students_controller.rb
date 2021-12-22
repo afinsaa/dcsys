@@ -73,9 +73,7 @@ class StudentsController < ApplicationController
           filename: 'image.jpg'
         })
 
-        if params[:photo].attached?
-          @student.photo.attach(params[:photo])
-        end
+        
         format.html { redirect_to @student, notice: "Student was successfully created." }
         format.json { render :show, status: :created, location: @student }
       else
@@ -89,9 +87,9 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        if params[:photo].attached?
-          @student.photo.attach(params[:photo])
-        end
+        # if @student.photo.attached?
+        #   @student.photo.attach(params[:photo])
+        # end
         format.html { redirect_to @student, notice: "Student was successfully updated." }
         format.json { render :show, status: :ok, location: @student }
       else
@@ -103,6 +101,10 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1 or /students/1.json
   def destroy
+    parents = Parent.where(student_id: @student).accessible_by(current_ability)
+    parents.delete_all
+    notes = StudentReport.where(student_id: @student).accessible_by(current_ability)
+    notes.delete_all
     @student.destroy
     respond_to do |format|
       format.html { redirect_to students_url, notice: "Student was successfully destroyed." }
@@ -111,6 +113,10 @@ class StudentsController < ApplicationController
   end
 
   def delete_all
+    parents = Parent.accessible_by(current_ability)
+    parents.delete_all
+    notes = StudentReport.accessible_by(current_ability)
+    notes.delete_all
     Student.accessible_by(current_ability).delete_all
     redirect_to students_url, alert: t('portal.forms.delete_all.success')
   end
@@ -259,10 +265,10 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_student_params
-      params.require(:student).permit(:sid, :name, :status, :school_id)
+      params.require(:student).permit(:sid, :name, :status,:photo, :school_id)
     end
 
     def student_params
-      params.require(:student).permit(:sid, :name, :status)
+      params.require(:student).permit(:sid, :name, :photo, :status)
     end
 end

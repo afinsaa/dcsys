@@ -2,6 +2,7 @@ class StudentReport < ApplicationRecord
   
 
   belongs_to :student
+  belongs_to :user
   has_one_attached :attachment
 
   Status = [:note, :alert,  :reminder]
