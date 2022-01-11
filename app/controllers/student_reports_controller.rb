@@ -3,7 +3,7 @@ class StudentReportsController < ApplicationController
 
     def show
         @student = Student.find(params[:id])
-        @pagy, @st_reports = pagy(StudentReport.where(student: @student).accessible_by(current_ability).order( 'student_reports.id DESC' ))
+        @pagy, @st_reports = pagy(StudentReport.where(student: @student).order( 'student_reports.id DESC' ))
         @student_report = StudentReport.new
         
         respond_to do |format|

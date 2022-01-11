@@ -129,10 +129,10 @@ ar:
         undifined: 'غير معروف'
       note:
         title: 'سجل الملاحضات للطفل: '
-        note: 'الملاحضة'
-        type: 'نوع الملاحضة'
+        note: 'الملاحظة'
+        type: 'نوع الملاحظة'
         types:
-          note: 'ملاحضة'
+          note: 'ملاحظة'
           alert: 'اشعار'
           reminder: 'تذكير'
         
